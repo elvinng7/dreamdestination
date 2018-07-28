@@ -5,5 +5,5 @@ class MainPage(webapp2.RequestHandler):
         self.response.write('Hello, World!')
 
 app = webapp2.WSGIApplication([
-    ('/', MainPage), 
+    ('/', MainPage),
 ], debug=True)
