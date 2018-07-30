@@ -1,20 +1,25 @@
 body {
-  background-image: url("/images/cuba.jpeg");
+  background-image: url("/images/clouds.jpg");
   background-repeat: no-repeat;
   background-size: left center;
   background-size: cover;
+  margin: 0px;
 }
 
 #travelingquote {
 
 }
+h1 {
+  font-family: 'Open Sans', sans-serif;
+}
 
 .nav ul {
   list-style: none;
-  background-color: #444;
+  /* background-color: #444; */
   text-align: center;
   padding: 0;
   margin: 0;
+  background-color: transparent;
 }
 .nav li {
   font-family: 'Oswald', sans-serif;
@@ -40,6 +45,12 @@ body {
   color: #444;
   cursor: default;
 }
+
+/* .test {
+  background-color: red;
+  padding: 1px;
+  background-image: url("/images/cuba.jpeg");
+} */
 
 @media screen and (min-width: 600px) {
   .nav li {

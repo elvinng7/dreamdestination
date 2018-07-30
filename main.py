@@ -38,7 +38,7 @@ class QuestionsPage(webapp2.RequestHandler):
         # russia = {
         #     "weather":
         # }
-        
+
         templateVars = {
             "weather": question1,
             "transportation": question2,
@@ -58,5 +58,5 @@ class ResultsPage(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ("/", HomePage),
     ("/questions", QuestionsPage),
-    ("results", ResultsPage)
+    ("/results", ResultsPage)
 ], debug=True)

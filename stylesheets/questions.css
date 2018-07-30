@@ -1,4 +1,4 @@
-<style>
+
 body {
   background-color: #FFFFF0;
   margin: 0px;
@@ -8,7 +8,7 @@ body {
 .navbar {
   background-color: #5F7B7F;
   padding: 10px;
-  color: white;
+  color: black;
 }
 
 li {
@@ -30,4 +30,3 @@ ul {
 li a:hover {
   background-color: #303D40
 }
-</style>
