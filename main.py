@@ -1,27 +1,33 @@
 import webapp2
 import jinja2
 import os
+import logging
+import time
+from google.appengine.api import users
+from google.appengine.ext import ndb
 
 env = jinja2.Environment(
-    loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
+    loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
+    extensions=["jinja2.ext.autoescape"],
+    autoescape=True)
 
-class MainPage(webapp2.RequestHandler):
-    def get(self): #for a get request
-        template = env.get_template("templates/welcome.html")
-        self.response.write(template.render()) #the response
+class HomePage(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template("templates/home.html")
+        self.response.write(template.render())
 
-class CreateHandler(webapp2.RequestHandler):
-    def post(self):
-        name= self.request.get('name')
-        biography= self.request.get('biography')
+class QuestionsPage(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template("templates/questions.html")
+        self.response.write(template.render())
 
-        person = Person(name=name, biography=biography, email=email)
-        person.put()
-
-        time.sleep(2)
-        time.redirect('/')
+class ResultsPage(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template("templates/results.html")
+        self.response.write(template.render())
 
 app = webapp2.WSGIApplication([
-    ('/', MainPage),
-    ('/create', CreateHandler),
+    ("/", HomePage),
+    ("/question", QuestionsPage),
+    ("results", ResultsPage)
 ], debug=True)
