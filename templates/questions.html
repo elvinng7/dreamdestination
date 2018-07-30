@@ -2,18 +2,53 @@
 <title>Quiz Page</title>
 <style>
 body {
-  background-color: lightblue;
-  margin: 50px;
+  background-color: #FFFFF0;
+  margin: 0px;
   font-family: sans-serif;
+}
+
+.navbar {
+  background-color: #5F7B7F;
+  padding: 10px;
+  color: white;
+}
+
+li {
+  float: left;
+}
+li a {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  padding: 0px 15px;
+  color: white;
+  text-decoration: none;
+}
+ul {
+  overflow: hidden;
+  list-style-type: none;
+}
+
+li a:hover {
+  background-color: #303D40
 }
 </style>
 
-<h2>Welcome to Dream Destination! Here you will take a 4 question quiz in order to determine
+<div class="navbar">
+  <ul>
+  <li><a href="">Find your Dream</a></li>
+  <li><a href="">Travel Blog</a></li>
+  <li><a href="">Reviews</a></li>
+  <li><a href="">About the App</a></li>
+  <li><a href="">About Us/ Contact Us</a></li>
+</ul>
+</div>
+<h2 style="margin:50px;">Welcome to Dream Destination! Here you will take a 4 question quiz in order to determine
    your perfect vacation spot.
 <h2/>
 
-<h3>Select Your Preferences: </h3>
-<form method=POST action="/result">
+<h3 style="margin: 50px;">Select Your Preferences: </h3>
+<form method=POST action="/results" style="margin:50px;">
   <label>What type of weather would you like?</label><br>
     <input type="radio" name="question1" value="0">I love snow, hot chocolate, and building snowman.<br>
     <input type="radio" name="question1" value="1">I want to experience wind!<br>
