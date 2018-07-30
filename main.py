@@ -26,7 +26,6 @@ class HomePage(webapp2.RequestHandler):
 class QuestionsPage(webapp2.RequestHandler):
     def post(self):
         template = env.get_template("templates/questions.html")
-        self.response.write(template.render())
         templateVars = {
             "name": name,
             "weather": weather,
@@ -34,6 +33,8 @@ class QuestionsPage(webapp2.RequestHandler):
             "cost": cost,
             "numOfPeople": numOfPeople,
         }
+        self.response.write(template.render(templateVars))
+
 
 class ResultsPage(webapp2.RequestHandler):
     def get(self):
