@@ -1,3 +1,9 @@
 body {
-  background-color: yellow;
+  background-image: url(/images/paradise.jpeg);
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+
+#travelingquote {
+
 }
