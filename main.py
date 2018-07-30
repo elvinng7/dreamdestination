@@ -24,5 +24,4 @@ class CreateHandler(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ('/', MainPage),
     ('/create', CreateHandler),
->>>>>>> 5a8022637cca90f72ac97edbd81b7ce1e426f9ee
 ], debug=True)
