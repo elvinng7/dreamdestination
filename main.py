@@ -29,11 +29,16 @@ class QuestionsPage(webapp2.RequestHandler):
         self.response.write(template.render())
     def post(self):
         template = env.get_template("templates/questions.html")
-        question1 = self.request.get("question1")
-        question2 = self.request.get("question2")
-        question3 = self.request.get("question3")
-        question4 = self.request.get("question4")
+        weather = self.request.get("question1")
+        transportation = self.request.get("question2")
+        cost = self.request.get("question3")
+        numOfPeople = self.request.get("question4")
 
+        #
+        # russia = {
+        #     "weather":
+        # }
+        
         templateVars = {
             "weather": question1,
             "transportation": question2,
