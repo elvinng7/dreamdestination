@@ -11,6 +11,13 @@ env = jinja2.Environment(
     extensions=["jinja2.ext.autoescape"],
     autoescape=True)
 
+class User(ndb.Model):
+    name = ndb.StringProperty()
+    weather = ndb.IntegerProperty()
+    transportation = ndb.StringProperty()
+    cost = ndb.IntegerProperty()
+    numOfPeople = ndb.IntegerProperty()
+
 class HomePage(webapp2.RequestHandler):
     def get(self):
         template = env.get_template("templates/home.html")

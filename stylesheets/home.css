@@ -11,5 +11,7 @@ body {
 
 
 #topnav {
-
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
