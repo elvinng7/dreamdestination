@@ -17,9 +17,16 @@ class HomePage(webapp2.RequestHandler):
         self.response.write(template.render())
 
 class QuestionsPage(webapp2.RequestHandler):
-    def get(self):
+    def post(self):
         template = env.get_template("templates/questions.html")
         self.response.write(template.render())
+        templateVars = {
+            "name": name,
+            "weather": weather,
+            "transportation": transportation,
+            "cost": cost,
+            "numOfPeople": numOfPeople,
+        }
 
 class ResultsPage(webapp2.RequestHandler):
     def get(self):
@@ -28,6 +35,6 @@ class ResultsPage(webapp2.RequestHandler):
 
 app = webapp2.WSGIApplication([
     ("/", HomePage),
-    ("/question", QuestionsPage),
+    ("/questions", QuestionsPage),
     ("results", ResultsPage)
 ], debug=True)
