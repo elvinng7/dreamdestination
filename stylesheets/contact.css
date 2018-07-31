@@ -1,0 +1,94 @@
+body{
+  margin: 0px;
+}
+
+.navbar {
+  background-color: lightblue;
+  padding: 0px;
+  font-family: 'Amatic SC', cursive;
+}
+
+.navbar ul {
+  list-style-type: none;
+  text-align: center;
+  margin: 0px;
+}
+.navbar li {
+  font-size: 1.2em;
+  line-height: 40px;
+  height: 40px;
+  font-family: 'Amatic SC', cursive;
+  display: inline-block;
+  padding: 0px 15px;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #fff;
+  display: block;
+  transition: .3s background-color;
+}
+
+.navbar a:hover {
+  /* background-color: #005f5f; */
+  background-color: blue;
+}
+
+.navbar a.active {
+  background-color: #fff;
+  color: #444;
+  cursor: default;
+}
+img {
+  border-radius: 50%;
+}
+.card {
+  padding: 40px;
+  background-color: white;
+  margin: 40px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: -10px 10px 25px black;
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+
+.nav {
+  background-color: lightblue;
+  padding: 15px;
+  font-family: 'Amatic SC', cursive;
+}
+
+.nav ul {
+  list-style-type: none;
+  text-align: center;
+}
+.nav li {
+  font-size: 1.2em;
+  line-height: 40px;
+  height: 40px;
+  font-family: 'Amatic SC', cursive;
+  display: inline-block;
+  padding: 0px 15px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: black;
+  display: block;
+  transition: .3s background-color;
+}
+
+.nav a:hover {
+  /* background-color: #005f5f; */
+  background-color: blue;
+}
+
+.navbar a.active {
+  background-color: #fff;
+  color: #444;
+  cursor: default;
+}
