@@ -49,6 +49,7 @@ class ResultsPage(webapp2.RequestHandler):
         cost = self.request.get("question3")
         numOfPeople = self.request.get("question4")
 
+<<<<<<< HEAD
         location_string = weather + transportation + cost + numOfPeople
         location_number = int(location_string)
 
@@ -70,6 +71,12 @@ class ResultsPage(webapp2.RequestHandler):
             min_diff = city_sum
             min_city = cities
             dreamLocation = locations[min_city]
+=======
+        #
+        # russia = {
+        #     "weather":
+        # }
+>>>>>>> bf11f2f0a768f37cb3deb3fe4192565c8e6d7204
 
         templateVars = {
             "weather": weather,
