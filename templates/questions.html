@@ -1,59 +1,26 @@
 <!DOCTYPE html>
+<link rel="stylesheet" href="/stylesheets/questions.css"/>
 <title>Quiz Page</title>
-<style>
-body {
-  background-color: #FFFFF0;
-  margin: 0px;
-  font-family: sans-serif;
-}
-
-.navbar {
-  background-color: #5F7B7F;
-  padding: 10px;
-  color: white;
-}
-
-li {
-  float: left;
-}
-li a {
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  padding: 0px 15px;
-  color: white;
-  text-decoration: none;
-}
-ul {
-  overflow: hidden;
-  list-style-type: none;
-}
-
-li a:hover {
-  background-color: #303D40
-}
-</style>
-
 <div class="navbar">
   <ul>
-  <li><a href="">Find your Dream</a></li>
-  <li><a href="">Travel Blog</a></li>
-  <li><a href="">Reviews</a></li>
-  <li><a href="">About the App</a></li>
-  <li><a href="">About Us/ Contact Us</a></li>
-</ul>
+    <li><a href="">Find your Dream</a></li>
+    <li><a href="">Travel Blog</a></li>
+    <li><a href="">Reviews</a></li>
+    <li><a href="">About the App</a></li>
+    <li><a href="">About Us/ Contact Us</a></li>
+  </ul>
 </div>
 <h2 style="margin:50px;">Welcome to Dream Destination! Here you will take a 4 question quiz in order to determine
    your perfect vacation spot.
 <h2/>
 
 <h3 style="margin: 50px;">Select Your Preferences: </h3>
-<form method=POST action="/results" style="margin:50px;">
+<form method="post" action="/results" style="margin:50px;">
   <label>What type of weather would you like?</label><br>
-    <input type="radio" name="question1" value="0">I love snow, hot chocolate, and building snowman.<br>
-    <input type="radio" name="question1" value="1">I want to experience wind!<br>
-    <input type="radio" name="question1" value="2">Mild weather is the way to go. Not too hot not too cold.<br>
-    <input type="radio" name="question1" value="3">Nothing is better than cracking open a coconut on a hot sunny day by the beach<br>
+    <input type="radio" name="question1" value="0">Snowy<br>
+    <input type="radio" name="question1" value="1">Windy<br>
+    <input type="radio" name="question1" value="2">Average<br>
+    <input type="radio" name="question1" value="3">Sunny<br>
   <br>
   <label>What is your prefered mode of transportation?</label><br>
     <input type="radio" name="question2" value="0">Car<br>
@@ -70,5 +37,7 @@ li a:hover {
     <input type="radio" name="question4" value="0">Less than 2<br>
     <input type="radio" name="question4" value="1">Less than 5<br>
     <input type="radio" name="question4" value="2">Less than 10<br>
-  <br> <button>Submit</button>
+  <br>
+    <input type="submit" value="Submit!"/>
+
 </form>

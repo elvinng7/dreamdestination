@@ -1,8 +1,9 @@
 body {
-  background-image: url("/images/cuba.jpeg");
+  background-image: url("/images/clouds.jpg");
   background-repeat: no-repeat;
   background-size: left center;
   background-size: cover;
+  margin: 0px;
 }
 
 h1 {
@@ -13,19 +14,31 @@ font-family: "Times New Roman", Times, serif;
 
 }
 
+.title {
+  text-align: center;
+}
+
+
+h1 {
+  font-family: 'Open Sans', sans-serif;
+}
+
 .nav ul {
   list-style: none;
-  background-color: #444;
+  /* background-color: #444; */
   text-align: center;
   padding: 0;
   margin: 0;
+  background-color: transparent;
 }
 .nav li {
-  font-family: 'Oswald', sans-serif;
+  /* font-family: 'Oswald', sans-serif; */
   font-size: 1.2em;
   line-height: 40px;
   height: 40px;
   border-bottom: 1px solid #888;
+  font-family: 'Amatic SC', cursive;
+  display: inline-block;
 }
 
 .nav a {
@@ -45,6 +58,12 @@ font-family: "Times New Roman", Times, serif;
   cursor: default;
 }
 
+/* .test {
+  background-color: red;
+  padding: 1px;
+  background-image: url("/images/cuba.jpeg");
+} */
+
 @media screen and (min-width: 600px) {
   .nav li {
     width: 120px;
@@ -56,6 +75,12 @@ font-family: "Times New Roman", Times, serif;
 
   /* Option 1 - Display Inline */
   .nav li {
-    display: inline-block;
     margin-right: -4px;
   }
+
+.bottom {
+  position: absolute;
+  bottom: 400px;
+  left: 0px;
+  right:0px;
+}
