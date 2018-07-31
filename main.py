@@ -34,8 +34,18 @@ class HomePage(webapp2.RequestHandler):
         self.response.write(template.render())
 
 class QuestionsPage(webapp2.RequestHandler):
-    def get(self):
+    def post(self):
         template = env.get_template("templates/questions.html")
+        self.response.write(template.render())
+
+class Blog(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template("templates/blog.html")
+        self.response.write(template.render())
+
+class About(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template("templates/about.html")
         self.response.write(template.render())
 
 class ResultsPage(webapp2.RequestHandler):
@@ -49,7 +59,7 @@ class ResultsPage(webapp2.RequestHandler):
         cost = self.request.get("question3")
         numOfPeople = self.request.get("question4")
 
-<<<<<<< HEAD
+
         location_string = weather + transportation + cost + numOfPeople
         location_number = int(location_string)
 
@@ -71,12 +81,7 @@ class ResultsPage(webapp2.RequestHandler):
             min_diff = city_sum
             min_city = cities
             dreamLocation = locations[min_city]
-=======
-        #
-        # russia = {
-        #     "weather":
-        # }
->>>>>>> bf11f2f0a768f37cb3deb3fe4192565c8e6d7204
+
 
         templateVars = {
             "weather": weather,
@@ -90,5 +95,7 @@ class ResultsPage(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ("/", HomePage),
     ("/questions", QuestionsPage),
-    ("/results", ResultsPage)
+    ("/results", ResultsPage),
+    ("/blog", Blog),
+    ("/about", About),
 ], debug=True)
