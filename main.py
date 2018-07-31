@@ -48,6 +48,16 @@ class About(webapp2.RequestHandler):
         template = env.get_template("templates/about.html")
         self.response.write(template.render())
 
+class News(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template("templates/news.html")
+        self.response.write(template.render())
+
+class Contact(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template("templates/contact.html")
+        self.response.write(template.render())
+
 class ResultsPage(webapp2.RequestHandler):
     def get(self):
         template = env.get_template("templates/results.html")
@@ -98,4 +108,6 @@ app = webapp2.WSGIApplication([
     ("/results", ResultsPage),
     ("/blog", Blog),
     ("/about", About),
+    ("/news", News),
+    ("/contact", Contact),
 ], debug=True)
