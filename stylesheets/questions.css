@@ -16,9 +16,6 @@ a {
   font-size: 25px;
 }
 
-li {
-  float: left;
-}
 li a {
   display: flex;
   text-align: center;
@@ -27,11 +24,8 @@ li a {
   /* color: white; */
   text-decoration: none;
 }
+
 ul {
   overflow: hidden;
   list-style-type: none;
 }
-
-/* li a:hover {
-  background-color: #303D40
-} */

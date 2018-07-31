@@ -39,9 +39,11 @@ body{
   color: #444;
   cursor: default;
 }
+
 img {
   border-radius: 50%;
 }
+
 .card {
   padding: 40px;
   background-color: white;
@@ -52,9 +54,6 @@ img {
   display: flex;
   flex-direction: row;
 }
-
-
-
 
 .nav {
   background-color: lightblue;
