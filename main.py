@@ -17,37 +17,21 @@ env = jinja2.Environment(
     extensions=["jinja2.ext.autoescape"],
     autoescape=True)
 
-class Destination(object):
-    def __init__(self, weather, price, transportation, length, name):
-        self.weather = weather
-        self.price = price
-        self.transportation = transportation
-        self.length = length
-        self.name = name
+locations = {
+    231 : "Moscow, Russia",
+    1210 : "Chicago, USA",
+    2232 : "Beijing, China",
+    3001 : "Sunnyvale, USA",
+}
 
-destinations = [
-    # Outside of the country
-    Destination(3, 2, 4, 3, "Albuferia, Portugal"),
-    Destination(2, 2, 4, 2, "Naples, Italy"),
-    Destination(3, 2, 2, 3, "Tashkent, Uzbekistano"),
-    Destination(1, 2, 4, 2, "Vancouver, Canada"),
-    Destination(3, 2, 4, 3, "Kauai, Hawaii"),
+starting_point = "San Francisco, USA"
 
-    # Inside the US
-    Destination(1, 0, 2, 1, "Seattle, Washington"),
-    Destination(3, 0, 2, 1, "Yellowstone National Park, Wyoming"),
-    Destination(2, 2, 3, 2, "Mount Desert Island, Maine"),
-    Destination(3, 2, 3, 2, "Traverse City, Michigan"),
-    Destination(3, 2, 3, 2, "New York, New York"),
-    Destination(3, 0, 2, 1, "Santa Fe, New Mexico"),
-
-    # Inside the CA
-    Destination(1, 1, 0, 0, "San Francisco, California"),
-    Destination(2, 1, 0, 0, "Mountain View, California"),
-    Destination(3, 0, 1, 1, "San Diego, California"),
-    Destination(3, 1, 0, 0, "Santa Cruz, California"),
-    Destination(2, 1, 1, 1, "Monterey, California"),
-]
+class User(ndb.Model):
+    name = ndb.StringProperty()
+    weather = ndb.IntegerProperty()
+    transportation = ndb.StringProperty()
+    cost = ndb.IntegerProperty()
+    numOfPeople = ndb.IntegerProperty()
 
 class HomePage(webapp2.RequestHandler):
     def get(self):
@@ -73,17 +57,20 @@ class News(webapp2.RequestHandler):
     def get(self):
         template = env.get_template("templates/news.html")
         url = "https://newsapi.org/v2/everything?q=travel&apiKey=650c77ad9e074e7c91aa8cdf38ee54e1"
-        response = urlfetch.fetch(url)
-        json_result = json.loads(response.content)
+        response = urlfetch.fetch(url)  #gets the content of the api
+        json_result = json.loads(response.content)  #loads the contents of api as a json object
         articles = json_result["articles"]
+        photos = json_result["articles"["urlToImage"]]
+        for photo in photos:
+            if photo.status_code == 200:
+                self.response.write(photo.content)
+            else:
+                urlToImage = ""
         templateVars = {
-        "url": url,
-        "response": response,
-        "articles": articles,
-        "json_result": json_result,
+            "articles": articles,
         }
-
         self.response.write(template.render(templateVars))
+
 
 class Contact(webapp2.RequestHandler):
     def get(self):
@@ -97,33 +84,41 @@ class ResultsPage(webapp2.RequestHandler):
         self.response.write(template.render())
     def post(self):
         template = env.get_template("templates/results.html")
-
         weather = self.request.get("question1")
-        weather = int(weather)
-
         transportation = self.request.get("question2")
-        transportation = int(transportation)
+        cost = self.request.get("question3")
+        numOfPeople = self.request.get("question4")
 
-        price = self.request.get("question3")
-        price = int(price)
 
-        length = self.request.get("question4")
-        length = int(length)
+        location_string = weather + transportation + cost + numOfPeople
+        location_number = int(location_string)
 
-        min_result = None
-        dream_location = ""
+        result_of_city = 0
+        min_diff = sys.maxint
+        min_city = ""
 
-        for destination in destinations:
-            results_of_similarity = (abs(destination.weather - weather)
-                                    + abs(destination.transportation - transportation)
-                                    + abs(destination.price - price)
-                                    + abs(destination.length - length))
-            if min_result == None or min_result > results_of_similarity:
-                min_result = results_of_similarity
-                dream_location = destination.name
+        for cities in locations:
+            city_sum = 0
+            for num in range(4):
+                copy_cities = cities
+                last_num = location_number % 10
+                location_number /= 10
+                last_num_in_city = copy_cities % 10
+                copy_cities /= 10
+                final_location_num = abs(last_num - last_num_in_city)
+                city_sum += final_location_num
+        if city_sum < min_diff:
+            min_diff = city_sum
+            min_city = cities
+            dreamLocation = locations[min_city]
+
 
         templateVars = {
-            "dream_location": dream_location,
+            "weather": weather,
+            "transportation": transportation,
+            "cost": cost,
+            "numOfPeople": numOfPeople,
+            "dreamLocation": dreamLocation,
         }
         self.response.write(template.render(templateVars))
 
