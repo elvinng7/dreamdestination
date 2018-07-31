@@ -4,7 +4,7 @@ body{
 
 .navbar {
   background-color: lightblue;
-  padding: 0px;
+  padding: 20px;
   font-family: 'Amatic SC', cursive;
 }
 
@@ -31,7 +31,7 @@ body{
 
 .navbar a:hover {
   /* background-color: #005f5f; */
-  background-color: blue;
+  background-color: #8FB8BF;
 }
 
 .navbar a.active {
@@ -39,9 +39,11 @@ body{
   color: #444;
   cursor: default;
 }
+
 img {
   border-radius: 50%;
 }
+
 .card {
   padding: 40px;
   background-color: white;
@@ -52,9 +54,6 @@ img {
   display: flex;
   flex-direction: row;
 }
-
-
-
 
 .nav {
   background-color: lightblue;
