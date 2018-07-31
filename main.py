@@ -4,8 +4,13 @@ import os
 import sys
 import logging
 import time
+from google.appengine.api import urlfetch
+import json
+
 from google.appengine.api import users
 from google.appengine.ext import ndb
+
+API_KEY = "650c77ad9e074e7c91aa8cdf38ee54e1"
 
 env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -51,11 +56,23 @@ class About(webapp2.RequestHandler):
 class News(webapp2.RequestHandler):
     def get(self):
         template = env.get_template("templates/news.html")
-        self.response.write(template.render())
+        url = "https://newsapi.org/v2/everything?q=travel&apiKey=650c77ad9e074e7c91aa8cdf38ee54e1"
+        response = urlfetch.fetch(url)
+        json_result = json.loads(response.content)
+        articles = json_result["articles"]
+        templateVars = {
+        "url": url,
+        "response": response,
+        "articles": articles,
+        "json_result": json_result,
+        }
+
+        self.response.write(template.render(templateVars))
 
 class Contact(webapp2.RequestHandler):
     def get(self):
         template = env.get_template("templates/contact.html")
+
         self.response.write(template.render())
 
 class ResultsPage(webapp2.RequestHandler):
