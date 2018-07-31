@@ -9,6 +9,12 @@ body {
 #travelingquote {
 
 }
+
+.title {
+  text-align: center;
+}
+
+
 h1 {
   font-family: 'Open Sans', sans-serif;
 }
@@ -22,11 +28,13 @@ h1 {
   background-color: transparent;
 }
 .nav li {
-  font-family: 'Oswald', sans-serif;
+  /* font-family: 'Oswald', sans-serif; */
   font-size: 1.2em;
   line-height: 40px;
   height: 40px;
   border-bottom: 1px solid #888;
+  font-family: 'Amatic SC', cursive;
+  display: inline-block;
 }
 
 .nav a {
@@ -63,6 +71,12 @@ h1 {
 
   /* Option 1 - Display Inline */
   .nav li {
-    display: inline-block;
     margin-right: -4px;
   }
+
+.bottom {
+  position: absolute;
+  bottom: 400px;
+  left: 0px;
+  right:0px;
+}
