@@ -1,17 +1,31 @@
-<h1>Travel News</h1>
+<!DOCTYPE html>
 
+<head>
+  <link rel="stylesheet" href="/stylesheets/home.css"/></head>
+  <link rel="stylesheet" href="/stylesheets/home.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Amatic+SC:700|Open+Sans" rel="stylesheet">
+  <title>Welcome Page</title>
+</head>
 
-{% for article in articles %}
-<div id="newsbox">
-<a href = {{article["url"]}}>{{article["title"]}}</a>, {{article["author"]}},
+<body>
+    <div class="nav">
+       <ul>
+         <li class="home"><a href="/">Home</a></li>
+         <li class="blog"><a href="/blog">Blog</a></li>
+         <li class="news"><a href="/news">News</a></li>
+         <li class="about"><a href="/about">About</a></li>
+         <li class="contact"><a href="/contact">Contact</a></li>
+       </ul>
+     </div>
 
-<br>
-<img src={{urlToImage}} alt="Smiley face" height="42" width="42">
+  <h1>Travel News</h1>
 
-<br>
-{{article.urlToImage}}
-</div>
+  {% for article in articles %}
+    <div id="newsbox">
+      <a href = {{article["url"]}}>{{article["title"]}}</a>, {{article["author"]}}, <br>
+      <img src={{urlToImage}} alt="Smiley face" height="42" width="42"> <br>
+      {{article.urlToImage}}
+    </div> <br>
+  {% endfor %}
 
-<br>
-
-{% endfor %}
+</body>
