@@ -5,10 +5,15 @@ body {
   font-family: sans-serif;
 }
 
+a {
+  color: #5F7B7F;
+}
+
 .navbar {
-  background-color: #5F7B7F;
+  background-color: transparent;
   padding: 10px;
-  color: black;
+  font-family: 'Amatic SC', cursive;
+  font-size: 25px;
 }
 
 li {
@@ -19,7 +24,7 @@ li a {
   text-align: center;
   justify-content: center;
   padding: 0px 15px;
-  color: white;
+  /* color: white; */
   text-decoration: none;
 }
 ul {
@@ -27,6 +32,6 @@ ul {
   list-style-type: none;
 }
 
-li a:hover {
+/* li a:hover {
   background-color: #303D40
-}
+} */

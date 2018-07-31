@@ -4,8 +4,13 @@ import os
 import sys
 import logging
 import time
+from google.appengine.api import urlfetch
+import json
+
 from google.appengine.api import users
 from google.appengine.ext import ndb
+
+API_KEY = "650c77ad9e074e7c91aa8cdf38ee54e1"
 
 env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -50,8 +55,40 @@ class HomePage(webapp2.RequestHandler):
         self.response.write(template.render())
 
 class QuestionsPage(webapp2.RequestHandler):
-    def get(self):
+    def post(self):
         template = env.get_template("templates/questions.html")
+        self.response.write(template.render())
+
+class Blog(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template("templates/blog.html")
+        self.response.write(template.render())
+
+class About(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template("templates/about.html")
+        self.response.write(template.render())
+
+class News(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template("templates/news.html")
+        url = "https://newsapi.org/v2/everything?q=travel&apiKey=650c77ad9e074e7c91aa8cdf38ee54e1"
+        response = urlfetch.fetch(url)
+        json_result = json.loads(response.content)
+        articles = json_result["articles"]
+        templateVars = {
+        "url": url,
+        "response": response,
+        "articles": articles,
+        "json_result": json_result,
+        }
+
+        self.response.write(template.render(templateVars))
+
+class Contact(webapp2.RequestHandler):
+    def get(self):
+        template = env.get_template("templates/contact.html")
+
         self.response.write(template.render())
 
 class ResultsPage(webapp2.RequestHandler):
@@ -93,5 +130,9 @@ class ResultsPage(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([
     ("/", HomePage),
     ("/questions", QuestionsPage),
-    ("/results", ResultsPage)
+    ("/results", ResultsPage),
+    ("/blog", Blog),
+    ("/about", About),
+    ("/news", News),
+    ("/contact", Contact),
 ], debug=True)

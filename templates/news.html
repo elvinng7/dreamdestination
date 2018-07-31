@@ -1,0 +1,17 @@
+<h1>Travel News</h1>
+
+
+{% for article in articles %}
+<div id="newsbox">
+<a href = {{article["url"]}}>{{article["title"]}}</a>, {{article["author"]}},
+
+<br>
+<img src={{urlToImage}} alt="Smiley face" height="42" width="42">
+
+<br>
+{{article.urlToImage}}
+</div>
+
+<br>
+
+{% endfor %}
