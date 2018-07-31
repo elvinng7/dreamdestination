@@ -85,10 +85,6 @@ class ResultsPage(webapp2.RequestHandler):
                 min_result = results_of_similarity
                 dream_location = destination.name
 
-            print "this is min " + str(min_result) + " and this is dream " + dream_location + " this is the result of similarity " + str(results_of_similarity) + " this is the location of the instance " + destination.name
-
-        print dream_location
-
         templateVars = {
             "dream_location": dream_location,
         }
