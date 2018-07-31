@@ -17,21 +17,37 @@ env = jinja2.Environment(
     extensions=["jinja2.ext.autoescape"],
     autoescape=True)
 
-locations = {
-    231 : "Moscow, Russia",
-    1210 : "Chicago, USA",
-    2232 : "Beijing, China",
-    3001 : "Sunnyvale, USA",
-}
+class Destination(object):
+    def __init__(self, weather, price, transportation, length, name):
+        self.weather = weather
+        self.price = price
+        self.transportation = transportation
+        self.length = length
+        self.name = name
 
-starting_point = "San Francisco, USA"
+destinations = [
+    # Outside of the country
+    Destination(3, 2, 4, 3, "Albuferia, Portugal"),
+    Destination(2, 2, 4, 2, "Naples, Italy"),
+    Destination(3, 2, 2, 3, "Tashkent, Uzbekistano"),
+    Destination(1, 2, 4, 2, "Vancouver, Canada"),
+    Destination(3, 2, 4, 3, "Kauai, Hawaii"),
 
-class User(ndb.Model):
-    name = ndb.StringProperty()
-    weather = ndb.IntegerProperty()
-    transportation = ndb.StringProperty()
-    cost = ndb.IntegerProperty()
-    numOfPeople = ndb.IntegerProperty()
+    # Inside the US
+    Destination(1, 0, 2, 1, "Seattle, Washington"),
+    Destination(3, 0, 2, 1, "Yellowstone National Park, Wyoming"),
+    Destination(2, 2, 3, 2, "Mount Desert Island, Maine"),
+    Destination(3, 2, 3, 2, "Traverse City, Michigan"),
+    Destination(3, 2, 3, 2, "New York, New York"),
+    Destination(3, 0, 2, 1, "Santa Fe, New Mexico"),
+
+    # Inside the CA
+    Destination(1, 1, 0, 0, "San Francisco, California"),
+    Destination(2, 1, 0, 0, "Mountain View, California"),
+    Destination(3, 0, 1, 1, "San Diego, California"),
+    Destination(3, 1, 0, 0, "Santa Cruz, California"),
+    Destination(2, 1, 1, 1, "Monterey, California"),
+]
 
 class HomePage(webapp2.RequestHandler):
     def get(self):
@@ -81,41 +97,33 @@ class ResultsPage(webapp2.RequestHandler):
         self.response.write(template.render())
     def post(self):
         template = env.get_template("templates/results.html")
+
         weather = self.request.get("question1")
+        weather = int(weather)
+
         transportation = self.request.get("question2")
-        cost = self.request.get("question3")
-        numOfPeople = self.request.get("question4")
+        transportation = int(transportation)
 
+        price = self.request.get("question3")
+        price = int(price)
 
-        location_string = weather + transportation + cost + numOfPeople
-        location_number = int(location_string)
+        length = self.request.get("question4")
+        length = int(length)
 
-        result_of_city = 0
-        min_diff = sys.maxint
-        min_city = ""
+        min_result = None
+        dream_location = ""
 
-        for cities in locations:
-            city_sum = 0
-            for num in range(4):
-                copy_cities = cities
-                last_num = location_number % 10
-                location_number /= 10
-                last_num_in_city = copy_cities % 10
-                copy_cities /= 10
-                final_location_num = abs(last_num - last_num_in_city)
-                city_sum += final_location_num
-        if city_sum < min_diff:
-            min_diff = city_sum
-            min_city = cities
-            dreamLocation = locations[min_city]
-
+        for destination in destinations:
+            results_of_similarity = (abs(destination.weather - weather)
+                                    + abs(destination.transportation - transportation)
+                                    + abs(destination.price - price)
+                                    + abs(destination.length - length))
+            if min_result == None or min_result > results_of_similarity:
+                min_result = results_of_similarity
+                dream_location = destination.name
 
         templateVars = {
-            "weather": weather,
-            "transportation": transportation,
-            "cost": cost,
-            "numOfPeople": numOfPeople,
-            "dreamLocation": dreamLocation,
+            "dream_location": dream_location,
         }
         self.response.write(template.render(templateVars))
 
