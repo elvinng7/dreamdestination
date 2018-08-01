@@ -5,18 +5,6 @@ body {
   background-size: cover;
   margin: 0px;
 }
-#homebackground{
-  background-image: url("/images/clouds.jpeg");
-}
-
-#newsbackground{
-  background-image: url("/images/news.jpeg");
-}
-
-h1 {
-font-family: "Times New Roman", Times, serif;
-}
-
 
 #start {
   font-family: 'Open Sans', sans-serif;
