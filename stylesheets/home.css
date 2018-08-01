@@ -1,14 +1,15 @@
 body {
-  /* background-image: url("/images/clouds.jpg"); */
+  font-family: 'Open Sans Condensed', sans-serif;
   background-repeat: no-repeat;
   background-size: left center;
   background-size: cover;
   margin: 0px;
 }
+#homebackground {
+background-image: url("/images/clouds.jpg");
 
-h1 {
-font-family: "Times New Roman", Times, serif;
 }
+
 
 #start {
   font-family: 'Open Sans', sans-serif;
@@ -19,13 +20,9 @@ font-family: "Times New Roman", Times, serif;
 }
 
 
-h1 {
-  font-family: 'Open Sans', sans-serif;
-}
-
 .nav ul {
   list-style: none;
-  background-color: lightblue;
+  background-color: transparent;
   text-align: center;
   padding: 15px;
   margin: 0;
