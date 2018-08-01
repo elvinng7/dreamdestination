@@ -1,14 +1,27 @@
 body {
-  /* background-image: url("/images/clouds.jpg"); */
+  font-family: 'Open Sans Condensed', sans-serif;
   background-repeat: no-repeat;
   background-size: left center;
   background-size: cover;
   margin: 0px;
 }
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+#homebackground {
+background-image: url("/images/clouds.jpg");
+
+=======
+#newsbackground{
+  background-image: url("/images/news.jpg");
+}
+>>>>>>> 6da377da6e7e45f8c498160e25f77da08c19ad4c
 h1 {
 font-family: "Times New Roman", Times, serif;
+>>>>>>> c88574442a3220c8a53e7cac7285f3c640af2ef0
 }
+
 
 #start {
   font-family: 'Open Sans', sans-serif;
@@ -19,13 +32,9 @@ font-family: "Times New Roman", Times, serif;
 }
 
 
-h1 {
-  font-family: 'Open Sans', sans-serif;
-}
-
 .nav ul {
   list-style: none;
-  background-color: lightblue;
+  background-color: transparent;
   text-align: center;
   padding: 15px;
   margin: 0;
