@@ -1,9 +1,16 @@
 <!DOCTYPE html>
 <head>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
-  <link rel="stylesheet" href="stylesheets/news.css"
+  <link rel="stylesheet" href="/stylesheets/home.css"/></head>
   <link href="https://fonts.googleapis.com/css?family=Amatic+SC:700|Open+Sans" rel="stylesheet">
   <title>Welcome Page</title>
+
+<style>
+
+body {
+  background-image: url("/images/cuba.jpg");
+}
+</style>
+
 </head>
 
 <body id="newsbackground">
@@ -28,7 +35,7 @@
         <div id="title">{{article["title"]}}</div>
       </a>
 
-      {% if article["author"]  %}
+      {% if article["author"] and not article["author"].startswith("http") %}
        {{article["author"]}},
         {% else %}
         <br>
@@ -43,6 +50,9 @@
 
       <a href = {{article["url"]}}>{{article["title"]}}</a>, {{article["author"]}} <br>
 
+>>>>>>> c88574442a3220c8a53e7cac7285f3c640af2ef0
+>>>>>>> 6da377da6e7e45f8c498160e25f77da08c19ad4c
+>>>>>>> f31bf3f90f155a48df12d78c955c92e92122f61e
     </div>
     <div id="newsimage">
     <img src= {{article["urlToImage"]}} alt="Smiley face" height="200" width="200"> <br>

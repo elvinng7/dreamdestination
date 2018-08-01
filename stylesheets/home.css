@@ -1,12 +1,10 @@
 body {
   font-family: 'Open Sans Condensed', sans-serif;
-  background-image: url("images/travel.jpg");
   background-repeat: no-repeat;
   background-size: left center;
   background-size: cover;
   margin: 0px;
 }
-
 
 #start {
   font-family: 'Open Sans', sans-serif;
@@ -19,9 +17,9 @@ body {
 
 .nav ul {
   list-style: none;
-  background-color: yellow;
+  background-color: transparent;
   text-align: center;
-  padding: 30px;
+  padding: 15px;
   margin: 0;
   font-size: 15px;
 }
@@ -86,7 +84,7 @@ body {
 #title {
   font-size: 22px;
 }
-/* #newsbox {
+#newsbox {
   width: 1000px;
   length: 150px;
   padding: 40px;
@@ -97,4 +95,4 @@ body {
   box-shadow: -10px 10px 25px black;
   display: flex;
   flex-direction: row;
-  justify-content: space-between; */
+  justify-content: space-between;
