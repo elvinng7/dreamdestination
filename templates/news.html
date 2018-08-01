@@ -20,12 +20,12 @@
 
   <h1>Travel News</h1>
 
-
-
   {% for article in articles %}
     <div id="newsbox">
       <div>
+        <a href = {{article["url"]}}>{{article["title"]}}</a>, {{article["author"]}} <br>
 
+<<<<<<< HEAD
       <a href = {{article["url"]}}>
         <div id="title">{{article["title"]}}</div>
       </a>
@@ -43,6 +43,8 @@
 
 </ul>
 
+=======
+>>>>>>> 3ca225462fe0f7eb2ad97fc9820bda3d984354ca
     </div>
     <div id="newsimage">
     <img src= {{article["urlToImage"]}} alt="Smiley face" height="200" width="200"> <br>
