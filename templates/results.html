@@ -22,30 +22,30 @@
            <p>Your dream destination is: </p>
            <h2>{{dream_location}}</h2>
         </div>
-        <div id = "info_about_location">
-          <!-- THIS REQUIRES INFORMATION ABOUT THE LOCATION MEANING NEEDS API -->
-          {{summary}}
+        <div class = "location_bio">
+          <div id = "info_about_location">
+            {{summary}}
+          </div>
+          <div id = "photo_about_location">
+            <img src="{{image_url}}" alt="Photo of the location">
+          </div>
         </div>
         <div class = "hotels_food">
           <div id = "hotels">
-            <!-- THIS REQUIRES INFORMATION ABOUT NEARBY HOTELS MEANING NEEDS API -->
             <h3>Hotels Nearby</h3>
             This is general information about the hotels
           </div>
           <div id = "food">
-            <!-- THIS REQUIRES INFORMATION ABOUT NEARBY FOODS MEANING NEEDS API -->
             <h3>Food Nearby</h3>
           </div>
         </div>
         <div class = "activities_transportation">
           <div id = "activities">
             <h3>Activities Nearby</h3>
-            <!-- THIS REQUIRES INFORMATION ABOUT NEARBY ACTIVITIES MEANING NEEDS API -->
             This is general information about the activities
           </div>
           <div id = "transportation">
             <h3>Transportation Nearby</h3>
-            <!-- THIS REQUIRES INFORMATION ABOUT NEARBY TRANSPORTATION MEANING NEEDS API -->
             This is general information about the transportation
           </div>
         </div>
