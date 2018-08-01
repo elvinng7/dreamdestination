@@ -1,21 +1,10 @@
 body {
   font-family: 'Open Sans Condensed', sans-serif;
+  background-image: url("images/travel.jpg");
   background-repeat: no-repeat;
   background-size: left center;
   background-size: cover;
   margin: 0px;
-}
-<<<<<<< HEAD
-#homebackground {
-background-image: url("/images/clouds.jpg");
-
-=======
-#newsbackground{
-  background-image: url("/images/news.jpg");
-}
-h1 {
-font-family: "Times New Roman", Times, serif;
->>>>>>> c88574442a3220c8a53e7cac7285f3c640af2ef0
 }
 
 
@@ -30,9 +19,9 @@ font-family: "Times New Roman", Times, serif;
 
 .nav ul {
   list-style: none;
-  background-color: transparent;
+  background-color: yellow;
   text-align: center;
-  padding: 15px;
+  padding: 30px;
   margin: 0;
   font-size: 15px;
 }
@@ -97,7 +86,7 @@ font-family: "Times New Roman", Times, serif;
 #title {
   font-size: 22px;
 }
-#newsbox {
+/* #newsbox {
   width: 1000px;
   length: 150px;
   padding: 40px;
@@ -108,4 +97,4 @@ font-family: "Times New Roman", Times, serif;
   box-shadow: -10px 10px 25px black;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-between; */
