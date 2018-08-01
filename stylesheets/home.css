@@ -17,7 +17,7 @@ body {
 
 .nav ul {
   list-style: none;
-  background-color: transparent;
+  background-color: lightblue;
   text-align: center;
   padding: 15px;
   margin: 0;
@@ -50,6 +50,26 @@ body {
   color: #444;
   cursor: default;
 }
+
+/* .test {
+  background-color: red;
+  padding: 1px;
+  background-image: url("/images/cuba.jpeg");
+} */
+@media screen and (min-width: 600px) {
+  .nav li {
+    width: 120px;
+    border-bottom: none;
+    height: 50px;
+    line-height: 50px;
+    font-size: 1.4em;
+  }
+
+  /* Option 1 - Display Inline */
+  .nav li {
+    margin-right: -4px;
+  }
+
 
 /* .test {
   background-color: red;
