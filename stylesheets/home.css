@@ -5,9 +5,17 @@ body {
   background-size: cover;
   margin: 0px;
 }
+<<<<<<< HEAD
 #homebackground {
 background-image: url("/images/clouds.jpg");
 
+=======
+#newsbackground{
+  background-image: url("/images/news.jpg");
+}
+h1 {
+font-family: "Times New Roman", Times, serif;
+>>>>>>> c88574442a3220c8a53e7cac7285f3c640af2ef0
 }
 
 
@@ -84,6 +92,10 @@ background-image: url("/images/clouds.jpg");
 #newsimage {
   right: 0px;
 
+}
+
+#title {
+  font-size: 22px;
 }
 #newsbox {
   width: 1000px;

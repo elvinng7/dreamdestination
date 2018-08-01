@@ -5,6 +5,7 @@ import sys
 import logging
 import time
 import json
+import urllib
 
 from google.appengine.api import urlfetch
 from google.appengine.api import users
@@ -12,6 +13,7 @@ from google.appengine.ext import ndb
 
 API_KEY = "650c77ad9e074e7c91aa8cdf38ee54e1"
 PLACES_API_KEY = "AIzaSyApHUjZLzg4xbbE0-DaMZSrrqnQ1DiE6lc"
+YELP_API_KEY = "9h-YvamQKLnHuo_aRQWp0GONd53Bx07Q25WBJMuIPoiEePZPTHAwOPjQFO6o3N6vgSh32Fd2-AAs-lUc8NaSNOen10BxNbPBVls08lJG3B_z0ee2Ve8Z2jPidPVhW3Yx"
 
 env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -74,9 +76,15 @@ class News(webapp2.RequestHandler):
     def get(self):
         template = env.get_template("templates/news.html")
         url = "https://newsapi.org/v2/top-headlines?sources=google-news&apiKey=650c77ad9e074e7c91aa8cdf38ee54e1"
+        #https://newsapi.org/v2/top-headlines?sources=google-news&apiKey=650c77ad9e074e7c91aa8cdf38ee54e1"
         response = urlfetch.fetch(url)
         json_result = json.loads(response.content)
         articles = json_result["articles"]
+        # for article in articles:
+        #     author = article["author"]
+        #     if author is None:
+        #         article["author"] == " "
+
         templateVars = {
             "url": url,
             "response": response,
@@ -122,10 +130,18 @@ class ResultsPage(webapp2.RequestHandler):
                 min_result = results_of_similarity
                 dream_location = destination.name
 
+        url = "http://api.geonames.org/wikipediaSearchJSON?q=" + urllib.quote(dream_location) + "&username=areetaw"
+        response = urlfetch.fetch(url)
+        json_result = json.loads(response.content)
+        summary = json_result["geonames"][0]["summary"]
+
         templateVars = {
             "dream_location": dream_location,
+            "summary": summary,
+            # "food": food,
         }
         self.response.write(template.render(templateVars))
+
 
 app = webapp2.WSGIApplication([
     ("/", HomePage),
