@@ -80,11 +80,7 @@ class News(webapp2.RequestHandler):
         response = urlfetch.fetch(url)
         json_result = json.loads(response.content)
         articles = json_result["articles"]
-        # for article in articles:
-        #     author = article["author"]
-        #     if author is None:
-        #         article["author"] == " "
-
+        logging.info(articles)
         templateVars = {
             "url": url,
             "response": response,
