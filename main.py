@@ -73,9 +73,15 @@ class News(webapp2.RequestHandler):
     def get(self):
         template = env.get_template("templates/news.html")
         url = "https://newsapi.org/v2/top-headlines?sources=google-news&apiKey=650c77ad9e074e7c91aa8cdf38ee54e1"
+        #https://newsapi.org/v2/top-headlines?sources=google-news&apiKey=650c77ad9e074e7c91aa8cdf38ee54e1"
         response = urlfetch.fetch(url)
         json_result = json.loads(response.content)
         articles = json_result["articles"]
+        # for article in articles:
+        #     author = article["author"]
+        #     if author is None:
+        #         article["author"] == " "
+
         templateVars = {
         "url": url,
         "response": response,

@@ -7,7 +7,7 @@
   <title>Welcome Page</title>
 </head>
 
-<body>
+<body id="newsbackground">
     <div class="nav">
        <ul>
          <li class="home"><a href="/">Home</a></li>
@@ -26,8 +26,23 @@
     <div id="newsbox">
       <div>
 
-      <a href = {{article["url"]}}>{{article["title"]}}</a>, {{article["author"]}} <br>
-      
+      <a href = {{article["url"]}}>
+        <div id="title">{{article["title"]}}</div>
+      </a>
+
+      {% if article["author"]  %}
+       {{article["author"]}},
+        {% else %}
+        <br>
+
+    {% endif %}
+    <br>
+    <br>
+    <ul>
+  <li>{{article["description"]}}</li>
+
+</ul>
+
     </div>
     <div id="newsimage">
     <img src= {{article["urlToImage"]}} alt="Smiley face" height="200" width="200"> <br>

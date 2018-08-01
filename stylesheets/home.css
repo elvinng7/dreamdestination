@@ -5,7 +5,9 @@ body {
   background-size: cover;
   margin: 0px;
 }
-
+#newsbackground{
+  background-image: url("/images/news.jpg");
+}
 h1 {
 font-family: "Times New Roman", Times, serif;
 }
@@ -87,6 +89,10 @@ h1 {
 #newsimage {
   right: 0px;
 
+}
+
+#title {
+  font-size: 22px;
 }
 #newsbox {
   width: 1000px;
