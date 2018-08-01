@@ -2,17 +2,21 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
+p, h2 {
+  margin: 0;
+}
+
 .container {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: yellow;
   margin: 50px;
 }
 
 #location {
   font-size: 20px;
-  margin-left: 30px;
-  margin-right: 30px;
 }
 
 #info_about_location {
@@ -22,25 +26,38 @@ body {
 .hotels_food {
   display: flex;
   flex-direction: row;
+  width: 100%;
 }
 
 #hotels {
-  margin: 30px;
+  background-color: gray;
+  border-color: red;
+  width: 50%;
+  flex-grow: 1;
+  padding: 30px;
 }
 
 #food {
-  margin: 30px;
+  width: 50%;
+  background-color: lightgray;
+  flex-grow: 1;
+  padding: 30px;
 }
 
 .activities_transportation {
   display: flex;
   flex-direction: row;
+  width: 100%;
 }
 
 #activities {
-  margin: 30px;
+  width: 50%;
+  flex-grow: 1;
+  padding: 30px;
 }
 
 #transportation {
-  margin: 30px;
+  width: 50%;
+  flex-grow: 1;
+  padding: 30px;
 }

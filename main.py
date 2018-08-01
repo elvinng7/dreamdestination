@@ -77,18 +77,16 @@ class News(webapp2.RequestHandler):
         json_result = json.loads(response.content)
         articles = json_result["articles"]
         templateVars = {
-        "url": url,
-        "response": response,
-        "articles": articles,
-        "json_result": json_result,
+            "url": url,
+            "response": response,
+            "articles": articles,
+            "json_result": json_result,
         }
-
         self.response.write(template.render(templateVars))
 
 class Contact(webapp2.RequestHandler):
     def get(self):
         template = env.get_template("templates/contact.html")
-
         self.response.write(template.render())
 
 class ResultsPage(webapp2.RequestHandler):
