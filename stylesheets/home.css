@@ -5,9 +5,12 @@ body {
   background-size: cover;
   margin: 0px;
 }
+#home {
+  background-image: url("/images/clouds.jpeg")
+}
+#newsbackground {
+  background-image: url("/images/clouds.jpeg")
 
-#start {
-  font-family: 'Open Sans', sans-serif;
 }
 
 .title {
@@ -86,9 +89,12 @@ body {
 }
 
 #title {
-  font-size: 22px;
+  font-size: 20px;
+  text-align: left;
 }
 #newsbox {
+  text-align: left;
+  font-size: 15px;
   width: 1000px;
   length: 150px;
   padding: 40px;
