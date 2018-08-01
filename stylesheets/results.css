@@ -22,7 +22,10 @@ p, h2 {
   background-color: pink;
 }
 
-#info_about_location {
+.location_bio {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   padding: 30px;
   background-color: lightblue;
 }

@@ -30,9 +30,7 @@ class Destination(object):
 
 destinations = [
     # Outside of the country
-    Destination(3, 2, 4, 3, "Albuferia, Portugal"),
     Destination(2, 2, 4, 2, "Naples, Italy"),
-    Destination(3, 2, 2, 3, "Tashkent, Uzbekistano"),
     Destination(1, 2, 4, 2, "Vancouver, Canada"),
     Destination(3, 2, 4, 3, "Kauai, Hawaii"),
 
@@ -102,17 +100,10 @@ class ResultsPage(webapp2.RequestHandler):
     def post(self):
         template = env.get_template("templates/results.html")
 
-        weather = self.request.get("question1")
-        weather = int(weather)
-
-        transportation = self.request.get("question2")
-        transportation = int(transportation)
-
-        price = self.request.get("question3")
-        price = int(price)
-
-        length = self.request.get("question4")
-        length = int(length)
+        weather = int(self.request.get("question1"))
+        transportation = int(self.request.get("question2"))
+        price = int(self.request.get("question3"))
+        length = int(self.request.get("question4"))
 
         min_result = None
         dream_location = ""
@@ -126,15 +117,34 @@ class ResultsPage(webapp2.RequestHandler):
                 min_result = results_of_similarity
                 dream_location = destination.name
 
-        url = "http://api.geonames.org/wikipediaSearchJSON?q=" + urllib.quote(dream_location) + "&username=areetaw"
-        response = urlfetch.fetch(url)
-        json_result = json.loads(response.content)
-        summary = json_result["geonames"][0]["summary"]
+        # Getting information about the dream_location using Geonames API
+        geoname_url = "http://api.geonames.org/wikipediaSearchJSON?q=" + urllib.quote(dream_location) + "&username=areetaw"
+        geoname_response = urlfetch.fetch(geoname_url)
+        geoname_json_result = json.loads(geoname_response.content)
+        summary = geoname_json_result["geonames"][0]["summary"]
+
+        # Getting photo reference from Google Place Search API
+        places_searches_url = ("https://maps.googleapis.com/maps/api/place/findplacefromtext/json?inputtype=textquery&input="
+                              + urllib.quote(dream_location)
+                              + "&fields=photos,name&key="
+                              + urllib.quote(PLACES_API_KEY))
+
+        places_searches_response = urlfetch.fetch(places_searches_url)
+        places_searches_json_result = json.loads(places_searches_response.content)
+        photo_reference = places_searches_json_result["candidates"][0]["photos"][0]["photo_reference"]
+
+        # Using photo reference to call on Places Photo API
+        places_photo_url = ("https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="
+                            + urllib.quote(photo_reference)
+                            + "&key="
+                            + urllib.quote(PLACES_API_KEY))
+
+        # Getting food places near about the dream_location using Yelp API
 
         templateVars = {
             "dream_location": dream_location,
             "summary": summary,
-            # "food": food,
+            "image_url": places_photo_url,
         }
         self.response.write(template.render(templateVars))
 
