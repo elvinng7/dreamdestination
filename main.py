@@ -72,7 +72,7 @@ class About(webapp2.RequestHandler):
 class News(webapp2.RequestHandler):
     def get(self):
         template = env.get_template("templates/news.html")
-        url = "https://newsapi.org/v2/everything?q=travel&apiKey=650c77ad9e074e7c91aa8cdf38ee54e1"
+        url = "https://newsapi.org/v2/top-headlines?sources=google-news&apiKey=650c77ad9e074e7c91aa8cdf38ee54e1"
         response = urlfetch.fetch(url)
         json_result = json.loads(response.content)
         articles = json_result["articles"]
@@ -82,6 +82,7 @@ class News(webapp2.RequestHandler):
             "articles": articles,
             "json_result": json_result,
         }
+        print(json_result)
         self.response.write(template.render(templateVars))
 
 class Contact(webapp2.RequestHandler):
