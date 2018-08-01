@@ -11,6 +11,7 @@ from google.appengine.api import users
 from google.appengine.ext import ndb
 
 API_KEY = "650c77ad9e074e7c91aa8cdf38ee54e1"
+PLACES_API_KEY = "AIzaSyApHUjZLzg4xbbE0-DaMZSrrqnQ1DiE6lc"
 
 env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
