@@ -25,7 +25,10 @@ font-family: "Times New Roman", Times, serif;
 .title {
   text-align: center;
 }
-
+body {
+  text-align:center; font-family: 'Open Sans Condensed', sans-serif;
+  margin: 0px;
+}
 
 .nav ul {
   list-style: none;
@@ -82,25 +85,6 @@ font-family: "Times New Roman", Times, serif;
     margin-right: -4px;
   }
 
-
-/* .test {
-  background-color: red;
-  padding: 1px;
-  background-image: url("/images/cuba.jpeg");
-} */
-@media screen and (min-width: 600px) {
-  .nav li {
-    width: 120px;
-    border-bottom: none;
-    height: 50px;
-    line-height: 50px;
-    font-size: 1.4em;
-  }
-
-  /* Option 1 - Display Inline */
-  .nav li {
-    margin-right: -4px;
-  }
 
 .bottom {
   position: absolute;

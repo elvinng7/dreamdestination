@@ -1,6 +1,8 @@
 body {
+  text-align:center; font-family: 'Open Sans Condensed', sans-serif;
   margin: 0px;
 }
+
 .nav ul {
   list-style: none;
   background-color: lightblue;

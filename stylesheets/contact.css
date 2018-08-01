@@ -6,7 +6,7 @@ body{
 .navbar {
   background-color: lightblue;
   padding: 20px;
-  font-family: 'Amatic SC', cursive;
+  font-family: 'Open Sans Condensed', sans-serif;
 }
 
 .navbar ul {
@@ -18,7 +18,7 @@ body{
   font-size: 1.2em;
   line-height: 40px;
   height: 40px;
-  font-family: 'Amatic SC', cursive;
+  font-family: 'Open Sans Condensed', sans-serif;
   display: inline-block;
   padding: 0px 20px;
 }
@@ -59,7 +59,7 @@ img {
 .nav {
   background-color: lightblue;
   padding: 15px;
-  font-family: 'Amatic SC', cursive;
+  font-family: 'Open Sans Condensed', sans-serif;
 }
 
 .nav ul {
@@ -70,7 +70,7 @@ img {
   font-size: 1.2em;
   line-height: 40px;
   height: 40px;
-  font-family: 'Amatic SC', cursive;
+  font-family: 'Open Sans Condensed', sans-serif;
   display: inline-block;
   padding: 0px 15px;
 }
