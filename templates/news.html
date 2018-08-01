@@ -4,14 +4,13 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
   <link rel="stylesheet" href="stylesheets/news.css"
   <link href="https://fonts.googleapis.com/css?family=Amatic+SC:700|Open+Sans" rel="stylesheet">
+  <title>Welcome Page</title>
 </head>
-<title>Welcome Page</title>
 
 <style>
-
-body {
-  background-image: url("/images/cuba.jpeg");
-}
+  body {
+    background-image: url("/images/cuba.jpeg");
+  }
 </style>
 
 <body id="newsbackground">
@@ -24,39 +23,26 @@ body {
          <li class="contact"><a href="/contact">Contact</a></li>
        </ul>
      </div>
-
   <h1>Travel News</h1>
-
   {% for article in articles %}
     <div id="newsbox">
       <div>
-      <a href = {{article["url"]}}>
-        <div id="title">{{article["title"]}}</div>
-      </a>
+        <a href = {{article["url"]}}>
+          <div id="title">{{article["title"]}}</div>
+        </a>
       {% if article["author"] and not article["author"].startswith("http") %}
-       {{article["author"]}},
-        {% else %}
+        {{article["author"]}},
+      {% else %}
         <br>
-
-    {% endif %}
-    <br>
-    <br>
-    <ul>
-  <li>{{article["description"]}}</li>
-</ul>
-
-
-
-<<<<<<< HEAD
-=======
-
-
->>>>>>> 222e3fc940b3a187e76cc9005d16f21f0c68f54a
-    </div>
-    <div id="newsimage">
-    <img src= {{article["urlToImage"]}} alt="Smiley face" height="200" width="200"> <br>
-    </div>
+      {% endif %}
+        <br><br>
+        <ul>
+          <li>{{article["description"]}}</li>
+        </ul>
+      </div>
+      <div id="newsimage">
+        <img src= {{article["urlToImage"]}} alt="Smiley face" height="200" width="200"> <br>
+      </div>
     </div> <br>
   {% endfor %}
-
 </body>
