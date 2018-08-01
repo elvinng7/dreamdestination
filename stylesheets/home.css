@@ -84,3 +84,19 @@ h1 {
   left: 0px;
   right:0px;
 }
+#newsimage {
+  right: 0px;
+
+}
+#newsbox {
+  width: 1000px;
+  length: 150px;
+  padding: 40px;
+  background-color: white;
+  margin: 40px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: -10px 10px 25px black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
