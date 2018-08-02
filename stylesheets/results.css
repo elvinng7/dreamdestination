@@ -1,9 +1,10 @@
 body {
   font-family: 'Open Sans Condensed', sans-serif;
   margin: 0px;
+  font-size: 20px;
 }
 
-p, h2 {
+p, h2, h3 {
   margin: 0;
 }
 
@@ -17,9 +18,12 @@ p, h2 {
 }
 
 #location {
-  font-size: 20px;
   padding: 30px;
   background-color: pink;
+}
+
+#info_about_location {
+  padding: 50px;
 }
 
 .location_bio {
@@ -76,17 +80,17 @@ p, h2 {
   list-style: none;
   background-color: lightblue;
   text-align: center;
-  padding: 15px;
   margin: 0;
   font-size: 15px;
 }
+
 .nav li {
   /* font-family: 'Oswald', sans-serif; */
   font-size: 1.2em;
   line-height: 40px;
   height: 40px;
   border-bottom: 1px solid #888;
-  font-family: 'Amatic SC', cursive;
+  font-family: 'Playfair Display SC', serif;
   display: inline-block;
 }
 
@@ -108,11 +112,6 @@ p, h2 {
   cursor: default;
 }
 
-/* .test {
-  background-color: red;
-  padding: 1px;
-  background-image: url("/images/cuba.jpeg");
-} */
 @media screen and (min-width: 600px) {
   .nav li {
     width: 120px;
@@ -122,7 +121,6 @@ p, h2 {
     font-size: 1.4em;
   }
 
-  /* Option 1 - Display Inline */
   .nav li {
     margin-right: -4px;
   }

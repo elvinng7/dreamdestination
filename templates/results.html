@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-
 <head>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
-  <link rel="stylesheet" href="stylesheets/results.css"
+  <link rel="stylesheet" href="/stylesheets/contact.css"/>
+  <link rel="stylesheet" href="/stylesheets/results.css"/>
   <link href="https://fonts.googleapis.com/css?family=Amatic+SC:700|Open+Sans" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC" rel="stylesheet">
   <title>Results Page</title>
 </head>
-
 <body>
     <div class="nav">
        <ul>
@@ -27,7 +27,10 @@
             {{summary}}
           </div>
           <div id = "photo_about_location">
-            <img src="{{image_url}}" alt="Photo of the location">
+            <iframe width="600" height="450" frameborder="0" style="border:0"
+              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyApHUjZLzg4xbbE0-DaMZSrrqnQ1DiE6lc
+                &q={{dream_location}}" allowfullscreen>
+            </iframe>
           </div>
         </div>
         <div class = "hotels_food">

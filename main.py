@@ -6,14 +6,27 @@ import logging
 import time
 import json
 import urllib
+import requests
+import pprint
 
 from google.appengine.api import urlfetch
 from google.appengine.api import users
 from google.appengine.ext import ndb
 
+from urllib2 import HTTPError
+from urllib import quote
+from urllib import urlencode
+
+# API Keys
 API_KEY = "650c77ad9e074e7c91aa8cdf38ee54e1"
 PLACES_API_KEY = "AIzaSyApHUjZLzg4xbbE0-DaMZSrrqnQ1DiE6lc"
+
 YELP_API_KEY = "9h-YvamQKLnHuo_aRQWp0GONd53Bx07Q25WBJMuIPoiEePZPTHAwOPjQFO6o3N6vgSh32Fd2-AAs-lUc8NaSNOen10BxNbPBVls08lJG3B_z0ee2Ve8Z2jPidPVhW3Yx"
+API_HOST = "https://api.yelp.com"
+SEARCH_PATH = "/v3/businesses/search"
+BUSINESS_PATH = "/v3/businesses/"
+
+WEATHER_API_KEY = "3b3ed0611bbcab0d2318cdd2f29b5942"
 
 env = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
@@ -73,8 +86,7 @@ class About(webapp2.RequestHandler):
 class News(webapp2.RequestHandler):
     def get(self):
         template = env.get_template("templates/news.html")
-        url = "https://newsapi.org/v2/top-headlines?sources=google-news&apiKey=650c77ad9e074e7c91aa8cdf38ee54e1"
-        #https://newsapi.org/v2/top-headlines?sources=google-news&apiKey=650c77ad9e074e7c91aa8cdf38ee54e1"
+        url = "https://newsapi.org/v2/top-headlines?sources=google-news&apiKey=" + urllib(API_KEY)
         response = urlfetch.fetch(url)
         json_result = json.loads(response.content)
         articles = json_result["articles"]
@@ -106,7 +118,7 @@ class ResultsPage(webapp2.RequestHandler):
         length = int(self.request.get("question4"))
 
         min_result = None
-        dream_location = ""
+        dream_location = "Not found"
 
         for destination in destinations:
             results_of_similarity = (abs(destination.weather - weather)
@@ -123,31 +135,22 @@ class ResultsPage(webapp2.RequestHandler):
         geoname_json_result = json.loads(geoname_response.content)
         summary = geoname_json_result["geonames"][0]["summary"]
 
-        # Getting photo reference from Google Place Search API
-        places_searches_url = ("https://maps.googleapis.com/maps/api/place/findplacefromtext/json?inputtype=textquery&input="
-                              + urllib.quote(dream_location)
-                              + "&fields=photos,name&key="
-                              + urllib.quote(PLACES_API_KEY))
-
-        places_searches_response = urlfetch.fetch(places_searches_url)
-        places_searches_json_result = json.loads(places_searches_response.content)
-        photo_reference = places_searches_json_result["candidates"][0]["photos"][0]["photo_reference"]
-
-        # Using photo reference to call on Places Photo API
-        places_photo_url = ("https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference="
-                            + urllib.quote(photo_reference)
-                            + "&key="
-                            + urllib.quote(PLACES_API_KEY))
 
         # Getting food places near about the dream_location using Yelp API
+        def search(api_key, term, location):
+
+            url_params = {
+                'term': term.replace(' ', '+'),
+                'location': location.replace(' ', '+'),
+                'limit': 3,
+            }
+            yelp_request = return request(API_HOST, SEARCH_PATH, YELP_API_KEY, url_params=url_params)
 
         templateVars = {
             "dream_location": dream_location,
             "summary": summary,
-            "image_url": places_photo_url,
         }
         self.response.write(template.render(templateVars))
-
 
 app = webapp2.WSGIApplication([
     ("/", HomePage),

@@ -2,6 +2,31 @@ body {
   font-family: 'Open Sans Condensed', sans-serif;
 }
 
+#newsbackground {
+  background-image: url("/images/clouds.jpeg")
+}
+
+#newsimage {
+  right: 0px;
+}
+
+#newsbox {
+  text-align: left;
+  font-size: 15px;
+  width: 1000px;
+  length: 150px;
+  padding: 40px;
+  background-color: white;
+  margin: 40px;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: -10px 10px 25px black;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
 .nav ul {
   list-style: none;
   background-color: lightblue;
@@ -11,12 +36,11 @@ body {
   font-size: 15px;
 }
 .nav li {
-  /* font-family: 'Oswald', sans-serif; */
   font-size: 1.2em;
   line-height: 40px;
   height: 40px;
   border-bottom: 1px solid #888;
-  font-family: 'Amatic SC', cursive;
+  ffont-family: 'Playfair Display SC', serif;
   display: inline-block;
 }
 
@@ -28,7 +52,6 @@ body {
 }
 
 .nav a:hover {
-  /* background-color: #005f5f; */
   background-color: #8FB8BF;
 }
 
@@ -38,11 +61,6 @@ body {
   cursor: default;
 }
 
-/* .test {
-  background-color: red;
-  padding: 1px;
-  background-image: url("/images/cuba.jpeg");
-} */
 @media screen and (min-width: 600px) {
   .nav li {
     width: 120px;
