@@ -37,7 +37,7 @@ ul {
   line-height: 40px;
   height: 40px;
   border-bottom: 1px solid #888;
-  font-family: 'Amatic SC', cursive;
+  font-family: 'Playfair Display SC', serif;
   display: inline-block;
 }
 
@@ -59,11 +59,6 @@ ul {
   cursor: default;
 }
 
-/* .test {
-  background-color: red;
-  padding: 1px;
-  background-image: url("/images/cuba.jpeg");
-} */
 @media screen and (min-width: 600px) {
   .nav li {
     width: 120px;
@@ -73,7 +68,6 @@ ul {
     font-size: 1.4em;
   }
 
-  /* Option 1 - Display Inline */
   .nav li {
     margin-right: -4px;
   }
