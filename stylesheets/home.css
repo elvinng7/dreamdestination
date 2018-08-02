@@ -11,11 +11,8 @@ body {
   background-image: url("/images/clouds.jpeg")
 }
 
-<<<<<<< HEAD
 #start {
   font-family: 'Open Sans', sans-serif;
-=======
->>>>>>> 2a99b7541012bde6d5004f28ac2174d692df8e84
 }
 
 .title {
@@ -48,18 +45,12 @@ body {
   transition: .3s background-color;
 }
 
+  .nav a.active {
+    background-color: #fff;
+    color: #444;
+    cursor: default;
+  }
 
-
-.nav a.active {
-  background-color: #fff;
-  color: #444;
-  cursor: default;
-}
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 2a99b7541012bde6d5004f28ac2174d692df8e84
 @media screen and (min-width: 600px) {
   .nav li {
     width: 120px;
