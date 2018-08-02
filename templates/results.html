@@ -35,28 +35,48 @@
         <div class = "hotels_food">
           <div id = "hotels">
             <h3>Hotels Nearby</h3>
-            This is general information about the hotels
+            {% for hotel in hotels %}
+              <div class="info">
+                  <div class="hotel_info">
+                    <p><a href="{{hotel["url"]}}">
+                      {{hotel["name"]}}</a>,
+                      {{hotel["rating"]}}/5.0, <br>
+                      {{hotel["review_count"]}} reviews,
+                      {{hotel["price"]}},
+                      {{hotel["phone"]}}
+                    </p>
+                    <p>{{hotel["location"]["address1"]}},
+                       {{hotel["location"]["city"]}},
+                       {{hotel["location"]["state"]}},
+                       {{hotel["location"]["zip_code"]}}
+                     </p>
+                  </div>
+                  <div class="restaurant_img">
+                    <img  align="right" src="{{hotel["image_url"]}}">
+                  </div>
+              </div>
+            {% endfor %}
           </div>
           <div id = "food">
             <h3>Food Nearby</h3>
-              {% for business in businesses %}
+              {% for restaurant in restaurants %}
                 <div class="info">
                     <div class="restaurant_info">
-                      <p><a href="{{business["url"]}}">
-                        {{business["name"]}}</a>,
-                        {{business["rating"]}}/5.0, <br>
-                        {{business["review_count"]}} reviews,
-                        {{business["price"]}},
-                        {{business["phone"]}}
+                      <p><a href="{{restaurant["url"]}}">
+                        {{restaurant["name"]}}</a>,
+                        {{restaurant["rating"]}}/5.0, <br>
+                        {{restaurant["review_count"]}} reviews,
+                        {{restaurant["price"]}},
+                        {{restaurant["phone"]}}
                       </p>
-                      <p>{{business["location"]["address1"]}},
-                         {{business["location"]["city"]}},
-                         {{business["location"]["state"]}},
-                         {{business["location"]["zip_code"]}}
+                      <p>{{restaurant["location"]["address1"]}},
+                         {{restaurant["location"]["city"]}},
+                         {{restaurant["location"]["state"]}},
+                         {{restaurant["location"]["zip_code"]}}
                        </p>
                     </div>
                     <div class="restaurant_img">
-                      <img  align="right" src="{{business["image_url"]}}">
+                      <img  align="right" src="{{restaurant["image_url"]}}">
                     </div>
                 </div>
               {% endfor %}
