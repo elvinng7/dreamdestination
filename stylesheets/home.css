@@ -10,6 +10,8 @@ body {
 #home {
   background-image: url("/images/clouds.jpeg")
 }
+#newsbackground {
+  background-image: url("/images/newsroom2.jpeg")
 
 #start {
   font-family: 'Open Sans', sans-serif;
