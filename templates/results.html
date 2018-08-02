@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <head>
-  <link rel="stylesheet" href="/stylesheets/contact.css"/>
   <link rel="stylesheet" href="/stylesheets/results.css"/>
   <link href="https://fonts.googleapis.com/css?family=Amatic+SC:700|Open+Sans" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
@@ -36,11 +35,51 @@
         <div class = "hotels_food">
           <div id = "hotels">
             <h3>Hotels Nearby</h3>
-            This is general information about the hotels
+            {% for hotel in hotels %}
+              <div class="info">
+                  <div class="hotel_info">
+                    <p><a href="{{hotel["url"]}}">
+                      {{hotel["name"]}}</a>,
+                      {{hotel["rating"]}}/5.0, <br>
+                      {{hotel["review_count"]}} reviews,
+                      {{hotel["price"]}},
+                      {{hotel["phone"]}}
+                    </p>
+                    <p>{{hotel["location"]["address1"]}},
+                       {{hotel["location"]["city"]}},
+                       {{hotel["location"]["state"]}},
+                       {{hotel["location"]["zip_code"]}}
+                     </p>
+                  </div>
+                  <div class="restaurant_img">
+                    <img  align="right" src="{{hotel["image_url"]}}">
+                  </div>
+              </div>
+            {% endfor %}
           </div>
           <div id = "food">
             <h3>Food Nearby</h3>
-            {{yelp_json}}
+              {% for restaurant in restaurants %}
+                <div class="info">
+                    <div class="restaurant_info">
+                      <p><a href="{{restaurant["url"]}}">
+                        {{restaurant["name"]}}</a>,
+                        {{restaurant["rating"]}}/5.0, <br>
+                        {{restaurant["review_count"]}} reviews,
+                        {{restaurant["price"]}},
+                        {{restaurant["phone"]}}
+                      </p>
+                      <p>{{restaurant["location"]["address1"]}},
+                         {{restaurant["location"]["city"]}},
+                         {{restaurant["location"]["state"]}},
+                         {{restaurant["location"]["zip_code"]}}
+                       </p>
+                    </div>
+                    <div class="restaurant_img">
+                      <img  align="right" src="{{restaurant["image_url"]}}">
+                    </div>
+                </div>
+              {% endfor %}
           </div>
         </div>
         <div class = "activities_transportation">

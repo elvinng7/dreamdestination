@@ -129,32 +129,42 @@ class ResultsPage(webapp2.RequestHandler):
         geoname_json_result = json.loads(geoname_response.content)
         summary = geoname_json_result["geonames"][0]["summary"]
 
-        # Getting food places near about the dream_location using Yelp API
+        # Getting food and hotel places near about the dream_location using Yelp API
         YELP_API_KEY = "9h-YvamQKLnHuo_aRQWp0GONd53Bx07Q25WBJMuIPoiEePZPTHAwOPjQFO6o3N6vgSh32Fd2-AAs-lUc8NaSNOen10BxNbPBVls08lJG3B_z0ee2Ve8Z2jPidPVhW3Yx"
         API_HOST = "https://api.yelp.com"
         SEARCH_PATH = "/v3/businesses/search"
-        term = "food"
+
+        food_term = "food"
+        hotel_term = "hotel"
         location = dream_location
-        limit = "3"
+        limit = "4"
 
         headers = {
             'Authorization': 'Bearer %s' % YELP_API_KEY,
         }
 
-        url = '{0}{1}?term={2}&location={3}&limit={4}'.format(API_HOST, quote(SEARCH_PATH.encode('utf8')), quote(term), quote(location), limit)
+        restaurants_url = '{0}{1}?term={2}&location={3}&limit={4}'.format(API_HOST, quote(SEARCH_PATH.encode('utf8')), quote(food_term), quote(location), limit)
+        hotels_url = '{0}{1}?term={2}&location={3}&limit={4}'.format(API_HOST, quote(SEARCH_PATH.encode('utf8')), quote(hotel_term), quote(location), limit)
 
-        print(u'Querying {0} ...'.format(url))
-
-        response = urlfetch.fetch(
-            url=url,
+        restaurants_response = urlfetch.fetch(
+            url=restaurants_url,
             headers=headers,)
 
-        yelp_json = json.loads(response.content)
+        hotels_response = urlfetch.fetch(
+            url=hotels_url,
+            headers=headers,)
+
+        restaurants_json = json.loads(restaurants_response.content)
+        restaurants = restaurants_json["businesses"]
+
+        hotels_json = json.loads(hotels_response.content)
+        hotels = hotels_json["businesses"]
 
         templateVars = {
             "dream_location": dream_location,
             "summary": summary,
-            "yelp_json": yelp_json,
+            "restaurants": restaurants,
+            "hotels": hotels,
         }
         self.response.write(template.render(templateVars))
 
