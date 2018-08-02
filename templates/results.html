@@ -39,24 +39,27 @@
           </div>
           <div id = "food">
             <h3>Food Nearby</h3>
-
               {% for business in businesses %}
-                <h4><a href="{{business["url"]}}">{{business["name"]}}</a>,
-                                                  {{business["rating"]}}/5.0,
-                                                  {{business["review_count"]}} reviews,
-                                                  {{business["price"]}},
-                                                  {{business["phone"]}}
-                </h4>
-                <p>{{business["location"]["address1"]}},
-                   {{business["location"]["city"]}},
-                   {{business["location"]["state"]}},
-                   {{business["location"]["zip_code"]}}</p>
-
-                <img src="{{business["image_url"]}}">
-
+                <div class="info">
+                    <div class="restaurant_info">
+                      <p><a href="{{business["url"]}}">
+                        {{business["name"]}}</a>,
+                        {{business["rating"]}}/5.0, <br>
+                        {{business["review_count"]}} reviews,
+                        {{business["price"]}},
+                        {{business["phone"]}}
+                      </p>
+                      <p>{{business["location"]["address1"]}},
+                         {{business["location"]["city"]}},
+                         {{business["location"]["state"]}},
+                         {{business["location"]["zip_code"]}}
+                       </p>
+                    </div>
+                    <div class="restaurant_img">
+                      <img  align="right" src="{{business["image_url"]}}">
+                    </div>
+                </div>
               {% endfor %}
-
-
           </div>
         </div>
         <div class = "activities_transportation">

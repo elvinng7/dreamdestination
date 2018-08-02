@@ -8,6 +8,10 @@ p, h2, h3 {
   margin: 0;
 }
 
+h3 {
+  text-align: center;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -53,7 +57,14 @@ p, h2, h3 {
   width: 50%;
   background-color: lightgray;
   flex-grow: 1;
-  padding: 30px;
+  padding: 20px;
+}
+
+.info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px;
 }
 
 .activities_transportation {
@@ -109,6 +120,10 @@ p, h2, h3 {
   background-color: #fff;
   color: #444;
   cursor: default;
+}
+
+img {
+  width: 200px
 }
 
 @media screen and (min-width: 600px) {
