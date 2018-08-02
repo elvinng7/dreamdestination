@@ -23,7 +23,7 @@ body {
 
 .nav ul {
   list-style: none;
-  background-color: lightblue;
+  background-color: transparent;
   text-align: center;
   padding: 15px;
   margin: 0;
