@@ -11,8 +11,11 @@ body {
   background-image: url("/images/clouds.jpeg")
 }
 
+<<<<<<< HEAD
 #start {
   font-family: 'Open Sans', sans-serif;
+=======
+>>>>>>> 2a99b7541012bde6d5004f28ac2174d692df8e84
 }
 
 .title {
@@ -21,19 +24,21 @@ body {
 
 .nav ul {
   list-style: none;
-  background-color: lightblue;
+  background-color: transparent;
   text-align: center;
   padding: 15px;
   margin: 0;
-  font-size: 15px;
+  font-size: 13px;
 }
 .nav li {
   font-size: 1.2em;
   line-height: 20px;
   height: 20px;
   border-bottom: 1px solid #888;
-  font-family: 'Amatic SC', cursive;
+  /* font-family: 'Amatic SC', cursive; */
   display: inline-block;
+  font-family: 'Playfair Display SC', serif;
+
 }
 
 .nav a {
@@ -43,10 +48,7 @@ body {
   transition: .3s background-color;
 }
 
-.nav a:hover {
-  /* background-color: #005f5f; */
-  background-color: #8FB8BF;
-}
+
 
 .nav a.active {
   background-color: #fff;
@@ -54,6 +56,10 @@ body {
   cursor: default;
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 2a99b7541012bde6d5004f28ac2174d692df8e84
 @media screen and (min-width: 600px) {
   .nav li {
     width: 120px;
@@ -70,7 +76,7 @@ body {
 
 .bottom {
   position: absolute;
-  bottom: 400px;
+  bottom: 350px;
   left: 0px;
   right:0px;
 }
