@@ -16,10 +16,6 @@ body {
 .title {
   text-align: center;
 }
-body {
-  text-align:center; font-family: 'Open Sans Condensed', sans-serif;
-  margin: 0px;
-}
 
 .nav ul {
   list-style: none;
@@ -35,8 +31,10 @@ body {
   line-height: 40px;
   height: 40px;
   border-bottom: 1px solid #888;
-  font-family: 'Amatic SC', cursive;
+  /* font-family: 'Amatic SC', cursive; */
   display: inline-block;
+  font-family: 'Playfair Display SC', serif;
+
 }
 
 .nav a {
@@ -54,11 +52,7 @@ body {
   cursor: default;
 }
 
-/* .test {
-  background-color: red;
-  padding: 1px;
-  background-image: url("/images/cuba.jpeg");
-} */
+
 @media screen and (min-width: 600px) {
   .nav li {
     width: 120px;
