@@ -14,13 +14,13 @@ body {
 }
 #left {
   flex-grow: 1;
+  width: 100%;
 }
 
 #newsimage {
   align-content: right;
   background-position: center;
   height: 200px;
-  width: 100%;
 }
 
 .im {
