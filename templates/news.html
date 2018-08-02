@@ -7,11 +7,6 @@
   <title>Welcome Page</title>
 </head>
 
-<style>
-  body {
-    background-image: url("/images/newsroom2.jpeg");
-  }
-</style>
 
 <body id="newsbackground">
     <div class="nav">
@@ -23,25 +18,26 @@
          <li class="contact"><a href="/contact">Contact</a></li>
        </ul>
      </div>
-  <h1>Travel News</h1>
+  <h1 id="traveltitle">Travel News</h1>
   {% for article in articles %}
     <div id="newsbox">
-      <div>
+      <div id="left">
         <a href = {{article["url"]}}>
           <div id="title">{{article["title"]}}</div>
         </a>
       {% if article["author"] and not article["author"].startswith("http") %}
         {{article["author"]}},
       {% else %}
-        <br>
+
       {% endif %}
         <br><br>
         <ul>
-          <li>{{article["description"]}}</li>
+        <li>{{article["description"]}}</li>
         </ul>
       </div>
+
       <div id="newsimage">
-        <img src= {{article["urlToImage"]}} alt="Smiley face" height="200" width="200"> <br>
+        <img class="im" src= {{article["urlToImage"]}} alt="Smiley face" height="200"> <br>
       </div>
     </div> <br>
   {% endfor %}

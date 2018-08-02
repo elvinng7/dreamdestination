@@ -3,16 +3,33 @@ body {
 }
 
 #newsbackground {
-  background-image: url("/images/clouds.jpeg")
+  background-image: url("/images/newsroom2.jpeg");
+  background-repeat: no-repeat;
+  background-size: 1800px 1011px;
+}
+#traveltitle {
+  color: white;
+  font-size: 45px;
+  text-align: center;
+}
+#left {
+  flex-grow: 1;
 }
 
 #newsimage {
-  right: 0px;
+  align-content: right;
+  background-position: center;
+  height: 200px;
+  width: 100%;
+}
+
+.im {
+  float: right;
 }
 
 #newsbox {
   text-align: left;
-  font-size: 15px;
+  font-size: 18px;
   width: 1000px;
   length: 150px;
   padding: 40px;
@@ -23,16 +40,18 @@ body {
   box-shadow: -10px 10px 25px black;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
 }
 
 
+#title {
+  font-size: 25px;
+}
 .nav ul {
   list-style: none;
   background-color: lightblue;
   text-align: center;
   padding: 15px;
-  margin: 0;
+  margin: -8px;
   font-size: 15px;
 }
 .nav li {
