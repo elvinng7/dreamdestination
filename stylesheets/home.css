@@ -5,13 +5,8 @@ body {
   background-size: cover;
   margin: 0px;
   text-align:center;
-}
-
-#home {
   background-image: url("/images/clouds.jpeg")
 }
-#newsbackground {
-  background-image: url("/images/newsroom2.jpeg")
 
 #start {
   font-family: 'Open Sans', sans-serif;
@@ -34,10 +29,8 @@ body {
   line-height: 20px;
   height: 20px;
   border-bottom: 1px solid #888;
-  /* font-family: 'Amatic SC', cursive; */
   display: inline-block;
   font-family: 'Playfair Display SC', serif;
-
 }
 
 .nav a {
@@ -47,11 +40,11 @@ body {
   transition: .3s background-color;
 }
 
-  .nav a.active {
-    background-color: #fff;
-    color: #444;
-    cursor: default;
-  }
+.nav a.active {
+  background-color: #fff;
+  color: #444;
+  cursor: default;
+}
 
 @media screen and (min-width: 600px) {
   .nav li {
@@ -62,7 +55,6 @@ body {
     font-size: 1.4em;
   }
 
-  /* Option 1 - Display Inline */
   .nav li {
     margin-right: -4px;
   }
