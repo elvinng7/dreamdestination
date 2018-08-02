@@ -6,7 +6,7 @@ body {
 
 .nav ul {
   list-style: none;
-  background-color: lightblue;
+  /* background-color: lightblue; */
   text-align: center;
   padding: 15px;
   margin: 0;
@@ -17,9 +17,9 @@ body {
   font-size: 1.2em;
   line-height: 40px;
   height: 40px;
-  border-bottom: 1px solid #888;
   font-family: 'Playfair Display SC', serif;
   display: inline-block;
+  background-image: url("images/clouds.jpeg");
 }
 
 .nav a {
@@ -40,11 +40,7 @@ body {
   cursor: default;
 }
 
-/* .test {
-  background-color: red;
-  padding: 1px;
-  background-image: url("/images/cuba.jpeg");
-} */
+
 @media screen and (min-width: 600px) {
   .nav li {
     width: 120px;
