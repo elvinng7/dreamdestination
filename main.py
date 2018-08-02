@@ -6,13 +6,13 @@ import logging
 import time
 import json
 import urllib
-import requests
 import pprint
+import argparse
+import requests
 
 from google.appengine.api import urlfetch
 from google.appengine.api import users
 from google.appengine.ext import ndb
-
 from urllib2 import HTTPError
 from urllib import quote
 from urllib import urlencode
@@ -20,12 +20,6 @@ from urllib import urlencode
 # API Keys
 API_KEY = "650c77ad9e074e7c91aa8cdf38ee54e1"
 PLACES_API_KEY = "AIzaSyApHUjZLzg4xbbE0-DaMZSrrqnQ1DiE6lc"
-
-YELP_API_KEY = "9h-YvamQKLnHuo_aRQWp0GONd53Bx07Q25WBJMuIPoiEePZPTHAwOPjQFO6o3N6vgSh32Fd2-AAs-lUc8NaSNOen10BxNbPBVls08lJG3B_z0ee2Ve8Z2jPidPVhW3Yx"
-API_HOST = "https://api.yelp.com"
-SEARCH_PATH = "/v3/businesses/search"
-BUSINESS_PATH = "/v3/businesses/"
-
 WEATHER_API_KEY = "3b3ed0611bbcab0d2318cdd2f29b5942"
 
 env = jinja2.Environment(
@@ -135,6 +129,33 @@ class ResultsPage(webapp2.RequestHandler):
         geoname_json_result = json.loads(geoname_response.content)
         summary = geoname_json_result["geonames"][0]["summary"]
 
+        # Getting food and hotel places near about the dream_location using Yelp API
+        YELP_API_KEY = "9h-YvamQKLnHuo_aRQWp0GONd53Bx07Q25WBJMuIPoiEePZPTHAwOPjQFO6o3N6vgSh32Fd2-AAs-lUc8NaSNOen10BxNbPBVls08lJG3B_z0ee2Ve8Z2jPidPVhW3Yx"
+        API_HOST = "https://api.yelp.com"
+        SEARCH_PATH = "/v3/businesses/search"
+
+        food_term = "food"
+        hotel_term = "hotel"
+        location = dream_location
+        limit = "4"
+
+        headers = {
+            'Authorization': 'Bearer %s' % YELP_API_KEY,
+        }
+
+        restaurants_url = '{0}{1}?term={2}&location={3}&limit={4}'.format(API_HOST, quote(SEARCH_PATH.encode('utf8')), quote(food_term), quote(location), limit)
+        hotels_url = '{0}{1}?term={2}&location={3}&limit={4}'.format(API_HOST, quote(SEARCH_PATH.encode('utf8')), quote(hotel_term), quote(location), limit)
+
+        restaurants_response = urlfetch.fetch(
+            url=restaurants_url,
+            headers=headers,)
+
+        hotels_response = urlfetch.fetch(
+            url=hotels_url,
+            headers=headers,)
+
+        restaurants_json = json.loads(restaurants_response.content)
+        restaurants = restaurants_json["businesses"]
 
         # # Getting food places near about the dream_location using Yelp API
         # def search(api_key, term, location):
@@ -147,6 +168,9 @@ class ResultsPage(webapp2.RequestHandler):
         #     yelp_request = return request(API_HOST, SEARCH_PATH, YELP_API_KEY, url_params=url_params)
         weather_url = "https://samples.openweathermap.org/data/2.5/forecast?q=" + urllib.quote(dream_location) + "&appid=9b1d5c38c7cf71459b9ac0908d63d060"
         weather = urlfetch.fetch(weather_url)
+
+        hotels_json = json.loads(hotels_response.content)
+        hotels = hotels_json["businesses"]
             # logging.info(weather_url)
         logging.info(weather.content)
         json_result = json.loads(weather.content)
@@ -157,6 +181,8 @@ class ResultsPage(webapp2.RequestHandler):
             "summary": summary,
             "temperature": temperature,
             "ct": ct,
+            "restaurants": restaurants,
+            "hotels": hotels,
         }
 
         self.response.write(template.render(templateVars))
