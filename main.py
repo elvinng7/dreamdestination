@@ -86,7 +86,7 @@ class About(webapp2.RequestHandler):
 class News(webapp2.RequestHandler):
     def get(self):
         template = env.get_template("templates/news.html")
-        url = "https://newsapi.org/v2/top-headlines?sources=google-news&apiKey=" + urllib(API_KEY)
+        url = "https://newsapi.org/v2/top-headlines?sources=google-news&apiKey=" + API_KEY
         response = urlfetch.fetch(url)
         json_result = json.loads(response.content)
         articles = json_result["articles"]
@@ -136,15 +136,15 @@ class ResultsPage(webapp2.RequestHandler):
         summary = geoname_json_result["geonames"][0]["summary"]
 
 
-        # Getting food places near about the dream_location using Yelp API
-        def search(api_key, term, location):
-
-            url_params = {
-                'term': term.replace(' ', '+'),
-                'location': location.replace(' ', '+'),
-                'limit': 3,
-            }
-            yelp_request = return request(API_HOST, SEARCH_PATH, YELP_API_KEY, url_params=url_params)
+        # # Getting food places near about the dream_location using Yelp API
+        # def search(api_key, term, location):
+        #
+        #     url_params = {
+        #         'term': term.replace(' ', '+'),
+        #         'location': location.replace(' ', '+'),
+        #         'limit': 3,
+        #     }
+        #     yelp_request = return request(API_HOST, SEARCH_PATH, YELP_API_KEY, url_params=url_params)
 
         templateVars = {
             "dream_location": dream_location,
