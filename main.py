@@ -106,7 +106,7 @@ class ResultsPage(webapp2.RequestHandler):
         length = int(self.request.get("question4"))
 
         min_result = None
-        dream_location = ""
+        dream_location = "Not found"
 
         for destination in destinations:
             results_of_similarity = (abs(destination.weather - weather)
@@ -124,10 +124,9 @@ class ResultsPage(webapp2.RequestHandler):
         summary = geoname_json_result["geonames"][0]["summary"]
 
         # Getting photo reference from Google Place Search API
-        places_searches_url = ("https://maps.googleapis.com/maps/api/place/findplacefromtext/json?inputtype=textquery&input="
-                              + urllib.quote(dream_location)
-                              + "&fields=photos,name&key="
-                              + urllib.quote(PLACES_API_KEY))
+        places_searches_url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?inputtype=textquery&input=" + urllib.quote(dream_location) + "&fields=photos,name&key=AIzaSyApHUjZLzg4xbbE0-DaMZSrrqnQ1DiE6lc"
+
+        print "places_searches_url", places_searches_url
 
         places_searches_response = urlfetch.fetch(places_searches_url)
         places_searches_json_result = json.loads(places_searches_response.content)
@@ -147,7 +146,6 @@ class ResultsPage(webapp2.RequestHandler):
             "image_url": places_photo_url,
         }
         self.response.write(template.render(templateVars))
-
 
 app = webapp2.WSGIApplication([
     ("/", HomePage),

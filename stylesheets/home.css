@@ -4,13 +4,18 @@ body {
   background-size: left center;
   background-size: cover;
   margin: 0px;
+  text-align:center;
 }
+
 #home {
   background-image: url("/images/clouds.jpeg")
 }
-#newsbackground {
-  background-image: url("/images/clouds.jpeg")
 
+<<<<<<< HEAD
+#start {
+  font-family: 'Open Sans', sans-serif;
+=======
+>>>>>>> 2a99b7541012bde6d5004f28ac2174d692df8e84
 }
 
 .title {
@@ -26,10 +31,9 @@ body {
   font-size: 13px;
 }
 .nav li {
-  /* font-family: 'Oswald', sans-serif; */
   font-size: 1.2em;
-  line-height: 40px;
-  height: 40px;
+  line-height: 20px;
+  height: 20px;
   border-bottom: 1px solid #888;
   /* font-family: 'Amatic SC', cursive; */
   display: inline-block;
@@ -52,7 +56,10 @@ body {
   cursor: default;
 }
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 2a99b7541012bde6d5004f28ac2174d692df8e84
 @media screen and (min-width: 600px) {
   .nav li {
     width: 120px;
@@ -67,33 +74,14 @@ body {
     margin-right: -4px;
   }
 
-
 .bottom {
   position: absolute;
   bottom: 380px;
   left: 0px;
   right:0px;
 }
-#newsimage {
-  right: 0px;
-
-}
 
 #title {
   font-size: 20px;
   text-align: left;
 }
-#newsbox {
-  text-align: left;
-  font-size: 15px;
-  width: 1000px;
-  length: 150px;
-  padding: 40px;
-  background-color: white;
-  margin: 40px;
-  border: 1px solid black;
-  border-radius: 5px;
-  box-shadow: -10px 10px 25px black;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
