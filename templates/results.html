@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <head>
-  <link rel="stylesheet" href="/stylesheets/contact.css"/>
   <link rel="stylesheet" href="/stylesheets/results.css"/>
   <link href="https://fonts.googleapis.com/css?family=Amatic+SC:700|Open+Sans" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
@@ -40,7 +39,24 @@
           </div>
           <div id = "food">
             <h3>Food Nearby</h3>
-            {{yelp_json}}
+
+              {% for business in businesses %}
+                <h4><a href="{{business["url"]}}">{{business["name"]}}</a>,
+                                                  {{business["rating"]}}/5.0,
+                                                  {{business["review_count"]}} reviews,
+                                                  {{business["price"]}},
+                                                  {{business["phone"]}}
+                </h4>
+                <p>{{business["location"]["address1"]}},
+                   {{business["location"]["city"]}},
+                   {{business["location"]["state"]}},
+                   {{business["location"]["zip_code"]}}</p>
+
+                <img src="{{business["image_url"]}}">
+
+              {% endfor %}
+
+
           </div>
         </div>
         <div class = "activities_transportation">

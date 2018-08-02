@@ -143,18 +143,18 @@ class ResultsPage(webapp2.RequestHandler):
 
         url = '{0}{1}?term={2}&location={3}&limit={4}'.format(API_HOST, quote(SEARCH_PATH.encode('utf8')), quote(term), quote(location), limit)
 
-        print(u'Querying {0} ...'.format(url))
-
         response = urlfetch.fetch(
             url=url,
             headers=headers,)
 
         yelp_json = json.loads(response.content)
+        businesses = yelp_json["businesses"]
+        print businesses
 
         templateVars = {
             "dream_location": dream_location,
             "summary": summary,
-            "yelp_json": yelp_json,
+            "businesses": businesses,
         }
         self.response.write(template.render(templateVars))
 
