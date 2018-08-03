@@ -53,8 +53,6 @@ img {
   margin-bottom: 50px;
   border: 1px solid black;
   border-radius: 5px;
-  /* display: flex;
-  flex-direction: row; */
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -63,9 +61,13 @@ img {
 }
 
 .profile_image {
-  width: 650px;
+  margin-right: 100px;
 }
 
 .profile_bio {
+  flex-grow: 1;
+}
 
+p {
+  font-size: 20px;
 }
