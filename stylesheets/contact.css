@@ -51,7 +51,7 @@ img {
   margin: 40px;
   border: 1px solid black;
   border-radius: 5px;
-  box-shadow: -10px 10px 25px black;
+  /* box-shadow: -10px 10px 25px black; */
   display: flex;
   flex-direction: row;
 }
