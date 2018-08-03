@@ -40,14 +40,14 @@ destinations = [
     Destination(2, 2, 4, 2, "Naples, Italy"),
     Destination(1, 2, 4, 2, "Vancouver, Canada"),
     Destination(3, 2, 4, 3, "Kauai, Hawaii"),
+    Destination(0, 2, 4, 2, "Zurich, Switzerland"),
 
     # Inside the US
     Destination(1, 0, 2, 1, "Seattle, Washington"),
-    Destination(3, 0, 2, 1, "Yellowstone National Park, Wyoming"),
     Destination(2, 2, 3, 2, "Mount Desert Island, Maine"),
     Destination(3, 2, 3, 2, "Traverse City, Michigan"),
-    Destination(3, 2, 3, 2, "New York, New York"),
     Destination(3, 0, 2, 1, "Santa Fe, New Mexico"),
+    Destination(2, 2, 2, 1, "Blackwater Falls State Park, West Virginia"),
 
     # Inside the CA
     Destination(1, 1, 0, 0, "San Francisco, California"),
@@ -91,7 +91,6 @@ class News(webapp2.RequestHandler):
             "articles": articles,
             "json_result": json_result,
         }
-        print(json_result)
         self.response.write(template.render(templateVars))
 
 class Contact(webapp2.RequestHandler):
@@ -113,12 +112,14 @@ class ResultsPage(webapp2.RequestHandler):
 
         min_result = None
         dream_location = "Not found"
-
+    # Destination(3, 0, 2, 1, "Santa Fe, New Mexico"),
+    # Destination(3, 1, 0, 0, "Santa Cruz, California"),
         for destination in destinations:
             results_of_similarity = (abs(destination.weather - weather)
                                     + abs(destination.transportation - transportation)
                                     + abs(destination.price - price)
                                     + abs(destination.length - length))
+            print "weather", destination.weather, "transportation", destination.transportation, "price", destination.price, "length", destination.length, "destination", destination.name, "results_of_similarity", results_of_similarity
             if min_result == None or min_result > results_of_similarity:
                 min_result = results_of_similarity
                 dream_location = destination.name
@@ -174,7 +175,6 @@ class ResultsPage(webapp2.RequestHandler):
         weather_url = "https://samples.openweathermap.org/data/2.5/forecast?q=" + urllib.quote(dream_location) + "&appid=9b1d5c38c7cf71459b9ac0908d63d060"
         weather = urlfetch.fetch(weather_url)
 
-        logging.info(weather.content)
         json_result = json.loads(weather.content)
         temperature = json_result["list"][0]["main"]["temp"]
         temp = temperature * (9/5) - 459.67
