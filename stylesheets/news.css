@@ -4,7 +4,7 @@ body {
 
 #newsbackground {
   background-repeat: no-repeat;
-  background-size: 1800px 1011px;
+  background-size: cover;
 }
 #traveltitle {
   color: black;
