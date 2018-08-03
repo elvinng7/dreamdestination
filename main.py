@@ -28,33 +28,34 @@ env = jinja2.Environment(
     autoescape=True)
 
 class Destination(object):
-    def __init__(self, weather, price, transportation, length, name):
+    def __init__(self, weather, price, transportation, length, name, city_id):
         self.weather = weather
         self.price = price
         self.transportation = transportation
         self.length = length
         self.name = name
+        self.city_id = city_id
 
 destinations = [
     # Outside of the country
-    Destination(2, 2, 4, 2, "Naples, Italy"),
-    Destination(1, 2, 4, 2, "Vancouver, Canada"),
-    Destination(3, 2, 4, 3, "Kauai, Hawaii"),
+    Destination(2, 2, 4, 2, "Naples, Italy", 0),
+    Destination(1, 2, 4, 2, "Vancouver, Canada", 0),
+    Destination(3, 2, 4, 3, "Kauai, Hawaii", 0),
 
     # Inside the US
-    Destination(1, 0, 2, 1, "Seattle, Washington"),
-    Destination(3, 0, 2, 1, "Yellowstone National Park, Wyoming"),
-    Destination(2, 2, 3, 2, "Mount Desert Island, Maine"),
-    Destination(3, 2, 3, 2, "Traverse City, Michigan"),
-    Destination(3, 2, 3, 2, "New York, New York"),
-    Destination(3, 0, 2, 1, "Santa Fe, New Mexico"),
+    Destination(1, 0, 2, 1, "Seattle, Washington", 5809844),
+    Destination(3, 0, 2, 1, "Yellowstone National Park, Wyoming", 0),
+    Destination(2, 2, 3, 2, "Mount Desert Island, Maine", 0),
+    Destination(3, 2, 3, 2, "Traverse City, Michigan", 0),
+    Destination(3, 2, 3, 2, "New York, New York", 0),
+    Destination(3, 0, 2, 1, "Santa Fe, New Mexico", 0),
 
     # Inside the CA
-    Destination(1, 1, 0, 0, "San Francisco, California"),
-    Destination(2, 1, 0, 0, "Mountain View, California"),
-    Destination(3, 0, 1, 1, "San Diego, California"),
-    Destination(3, 1, 0, 0, "Santa Cruz, California"),
-    Destination(2, 1, 1, 1, "Monterey, California"),
+    Destination(1, 1, 0, 0, "San Francisco, California", 0),
+    Destination(2, 1, 0, 0, "Mountain View, California", 0),
+    Destination(3, 0, 1, 1, "San Diego, California", 0),
+    Destination(3, 1, 0, 0, "Santa Cruz, California", 0),
+    Destination(2, 1, 1, 1, "Monterey, California", 0),
 ]
 
 class HomePage(webapp2.RequestHandler):
@@ -171,13 +172,13 @@ class ResultsPage(webapp2.RequestHandler):
         activities = activities_json["businesses"]
 
         # Getting the weather
-        weather_url = "https://samples.openweathermap.org/data/2.5/forecast?q=" + urllib.quote(dream_location) + "&appid=9b1d5c38c7cf71459b9ac0908d63d060"
+        weather_url = "https://api.openweathermap.org/data/2.5/forecast?q=" + urllib.quote(dream_location) + "&appid=9b1d5c38c7cf71459b9ac0908d63d060"
         weather = urlfetch.fetch(weather_url)
 
         logging.info(weather.content)
         json_result = json.loads(weather.content)
         temperature = json_result["list"][0]["main"]["temp"]
-        temp = temperature * (9/5) - 459.67
+        temp = temperature * (9.0/5.0) - 459.67
 
         templateVars = {
             "dream_location": dream_location,
