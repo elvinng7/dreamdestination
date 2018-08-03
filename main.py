@@ -170,13 +170,25 @@ class ResultsPage(webapp2.RequestHandler):
         activities_json = json.loads(activities_response.content)
         activities = activities_json["businesses"]
 
+        # Getting the weather
+        weather_url = "https://samples.openweathermap.org/data/2.5/forecast?q=" + urllib.quote(dream_location) + "&appid=9b1d5c38c7cf71459b9ac0908d63d060"
+        weather = urlfetch.fetch(weather_url)
+
+        logging.info(weather.content)
+        json_result = json.loads(weather.content)
+        temperature = json_result["list"][0]["main"]["temp"]
+        temp = (temperature * (9.0/5)) - 459.67
+
         templateVars = {
             "dream_location": dream_location,
             "summary": summary,
+            "temperature": temperature,
+            "temp": temp,
             "restaurants": restaurants,
             "hotels": hotels,
             "activities": activities,
         }
+
         self.response.write(template.render(templateVars))
 
 app = webapp2.WSGIApplication([
