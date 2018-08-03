@@ -5,7 +5,7 @@ body {
 #newsbackground {
   background-image: url("/images/newsroom2.jpeg");
   background-repeat: no-repeat;
-  background-size: 1800px 1011px;
+  background-size: cover;
 }
 #traveltitle {
   color: white;
@@ -15,6 +15,7 @@ body {
 #left {
   flex-grow: 1;
   width: 100%;
+  margin-right: 100px;
 }
 
 #newsimage {
@@ -40,6 +41,11 @@ body {
   box-shadow: -10px 10px 25px black;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+}
+
+#space{
+
 }
 
 #title {

@@ -166,23 +166,31 @@ class ResultsPage(webapp2.RequestHandler):
         #         'limit': 3,
         #     }
         #     yelp_request = return request(API_HOST, SEARCH_PATH, YELP_API_KEY, url_params=url_params)
-        weather_url = "https://samples.openweathermap.org/data/2.5/forecast?q=" + urllib.quote(dream_location) + "&appid=9b1d5c38c7cf71459b9ac0908d63d060"
-        weather = urlfetch.fetch(weather_url)
+
 
         hotels_json = json.loads(hotels_response.content)
         hotels = hotels_json["businesses"]
+
             # logging.info(weather_url)
+
+        weather_url = "https://samples.openweathermap.org/data/2.5/forecast?q=" + urllib.quote(dream_location) + "&appid=9b1d5c38c7cf71459b9ac0908d63d060"
+        weather = urlfetch.fetch(weather_url)
         logging.info(weather.content)
         json_result = json.loads(weather.content)
-        temperature = json_result["list"][0]["main"]["temp"]
-        ct = temperature - 273
+        current_temperature = json_result["list"][0]["main"]["temp"]
+        temperature_tommorow = json_result["list"][1]["main"]["temp"]
+        ct = current_temperature - 273
+        tt = temperature_tommorow - 273
         templateVars = {
             "dream_location": dream_location,
             "summary": summary,
-            "temperature": temperature,
+            "current_temperature": current_temperature,
+            "temperature_tommorow": temperature_tommorow,
             "ct": ct,
+            "tt": tt,
             "restaurants": restaurants,
             "hotels": hotels,
+
         }
 
         self.response.write(template.render(templateVars))
