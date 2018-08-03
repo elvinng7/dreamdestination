@@ -17,13 +17,13 @@ h3 {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: yellow;
+  background-color: lightgray;
   margin: 50px;
+
 }
 
 #location {
   padding: 30px;
-  background-color: pink;
 }
 
 #info_about_location {
@@ -35,8 +35,8 @@ h3 {
   flex-direction: row;
   align-items: center;
   padding: 30px;
-  background-color: lightblue;
   font-size: 20px;
+  backgrond-color: #8FADAA;
 }
 
 .hotels_food {
@@ -46,8 +46,6 @@ h3 {
 }
 
 #hotels {
-  background-color: gray;
-  border-color: red;
   width: 50%;
   flex-grow: 1;
   padding: 30px;
@@ -55,7 +53,6 @@ h3 {
 
 #food {
   width: 50%;
-  background-color: lightgray;
   flex-grow: 1;
   padding: 20px;
 }
@@ -63,11 +60,12 @@ h3 {
 .info {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
   align-items: center;
   padding: 10px;
 }
 
-.activities_transportation {
+.activities_weather {
   display: flex;
   flex-direction: row;
   width: 100%;
@@ -77,14 +75,12 @@ h3 {
   width: 50%;
   flex-grow: 1;
   padding: 30px;
-  background-color: green;
 }
 
-#transportation {
+#weather {
   width: 50%;
   flex-grow: 1;
   padding: 30px;
-  background-color: purple;
 }
 
 .nav ul {
@@ -122,8 +118,15 @@ h3 {
   cursor: default;
 }
 
-img {
-  width: 200px
+.img_div {
+  display: block;
+  float: right;
+  border: 2px solid black;
+  padding: 25px;
+  background-repeat: no-repeat;
+  background-size:cover;
+  width: 150px;
+  height: 150px;
 }
 
 @media screen and (min-width: 600px) {

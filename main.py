@@ -129,13 +129,15 @@ class ResultsPage(webapp2.RequestHandler):
         geoname_json_result = json.loads(geoname_response.content)
         summary = geoname_json_result["geonames"][0]["summary"]
 
-        # Getting food and hotel places near about the dream_location using Yelp API
+        # Getting food, hotel, and activities near about the dream_location using Yelp API
         YELP_API_KEY = "9h-YvamQKLnHuo_aRQWp0GONd53Bx07Q25WBJMuIPoiEePZPTHAwOPjQFO6o3N6vgSh32Fd2-AAs-lUc8NaSNOen10BxNbPBVls08lJG3B_z0ee2Ve8Z2jPidPVhW3Yx"
         API_HOST = "https://api.yelp.com"
         SEARCH_PATH = "/v3/businesses/search"
 
         food_term = "food"
         hotel_term = "hotel"
+        activities_term = "activities"
+
         location = dream_location
         limit = "4"
 
@@ -145,6 +147,7 @@ class ResultsPage(webapp2.RequestHandler):
 
         restaurants_url = '{0}{1}?term={2}&location={3}&limit={4}'.format(API_HOST, quote(SEARCH_PATH.encode('utf8')), quote(food_term), quote(location), limit)
         hotels_url = '{0}{1}?term={2}&location={3}&limit={4}'.format(API_HOST, quote(SEARCH_PATH.encode('utf8')), quote(hotel_term), quote(location), limit)
+        activities_url = '{0}{1}?term={2}&location={3}&limit={4}'.format(API_HOST, quote(SEARCH_PATH.encode('utf8')), quote(activities_term), quote(location), limit)
 
         restaurants_response = urlfetch.fetch(
             url=restaurants_url,
@@ -154,43 +157,35 @@ class ResultsPage(webapp2.RequestHandler):
             url=hotels_url,
             headers=headers,)
 
+        activities_response = urlfetch.fetch(
+            url=activities_url,
+            headers=headers,)
+
         restaurants_json = json.loads(restaurants_response.content)
         restaurants = restaurants_json["businesses"]
-
-        # # Getting food places near about the dream_location using Yelp API
-        # def search(api_key, term, location):
-        #
-        #     url_params = {
-        #         'term': term.replace(' ', '+'),
-        #         'location': location.replace(' ', '+'),
-        #         'limit': 3,
-        #     }
-        #     yelp_request = return request(API_HOST, SEARCH_PATH, YELP_API_KEY, url_params=url_params)
-
 
         hotels_json = json.loads(hotels_response.content)
         hotels = hotels_json["businesses"]
 
-            # logging.info(weather_url)
+        activities_json = json.loads(activities_response.content)
+        activities = activities_json["businesses"]
 
+        # Getting the weather
         weather_url = "https://samples.openweathermap.org/data/2.5/forecast?q=" + urllib.quote(dream_location) + "&appid=9b1d5c38c7cf71459b9ac0908d63d060"
         weather = urlfetch.fetch(weather_url)
+
         logging.info(weather.content)
         json_result = json.loads(weather.content)
-        current_temperature = json_result["list"][0]["main"]["temp"]
-        temperature_tommorow = json_result["list"][1]["main"]["temp"]
-        ct = current_temperature - 273
-        tt = temperature_tommorow - 273
+        temperature = json_result["list"][0]["main"]["temp"]
+        temp = temperature * (9/5) - 459.67
+
         templateVars = {
             "dream_location": dream_location,
             "summary": summary,
-            "current_temperature": current_temperature,
-            "temperature_tommorow": temperature_tommorow,
-            "ct": ct,
-            "tt": tt,
+            "temp": temp,
             "restaurants": restaurants,
             "hotels": hotels,
-
+            "activities": activities,
         }
 
         self.response.write(template.render(templateVars))

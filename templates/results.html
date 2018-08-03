@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
   <link rel="stylesheet" href="/stylesheets/results.css"/>
+  <link rel="stylesheet" href="/stylesheets/questions.css"/>
   <link href="https://fonts.googleapis.com/css?family=Amatic+SC:700|Open+Sans" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC" rel="stylesheet">
@@ -26,7 +27,7 @@
             {{summary}}
           </div>
           <div id = "photo_about_location">
-            <iframe width="600" height="450" frameborder="0" style="border:0"
+            <iframe width="700" height="300" frameborder="0" style="border:0"
               src="https://www.google.com/maps/embed/v1/place?key=AIzaSyApHUjZLzg4xbbE0-DaMZSrrqnQ1DiE6lc
                 &q={{dream_location}}" allowfullscreen>
             </iframe>
@@ -45,15 +46,13 @@
                       {{hotel["price"]}},
                       {{hotel["phone"]}}
                     </p>
-                    <p>{{hotel["location"]["address1"]}},
+                    <p>{{hotel["location"]["address1"]}}, <br>
                        {{hotel["location"]["city"]}},
                        {{hotel["location"]["state"]}},
                        {{hotel["location"]["zip_code"]}}
                      </p>
                   </div>
-                  <div class="restaurant_img">
-                    <img  align="right" src="{{hotel["image_url"]}}">
-                  </div>
+                  <div class="img_div" style='background-image: url({{hotel["image_url"]}})'></div>
               </div>
             {% endfor %}
           </div>
@@ -69,28 +68,49 @@
                         {{restaurant["price"]}},
                         {{restaurant["phone"]}}
                       </p>
-                      <p>{{restaurant["location"]["address1"]}},
+                      <p>{{restaurant["location"]["address1"]}}, <br>
                          {{restaurant["location"]["city"]}},
                          {{restaurant["location"]["state"]}},
                          {{restaurant["location"]["zip_code"]}}
                        </p>
                     </div>
-                    <div class="restaurant_img">
-                      <img  align="right" src="{{restaurant["image_url"]}}">
-                    </div>
+                    <div class="img_div" style='background-image: url({{restaurant["image_url"]}})'></div>
                 </div>
               {% endfor %}
           </div>
         </div>
-        <div class = "activities_transportation">
+        <div class = "activities_weather">
           <div id = "activities">
             <h3>Activities Nearby</h3>
-            This is general information about the activities
+
+            {% for activity in activities %}
+              <div class="info">
+                  <div class="activity_info">
+                    <p><a href="{{activity["url"]}}">
+                      {{activity["name"]}}</a>,
+                      {{activity["rating"]}}/5.0, <br>
+                      {{activity["review_count"]}} reviews,
+                      {{activity["price"]}},
+                      {{activity["phone"]}}
+                    </p>
+                    <p>{{activity["location"]["address1"]}}, <br>
+                       {{activity["location"]["city"]}},
+                       {{activity["location"]["state"]}},
+                       {{activity["location"]["zip_code"]}}
+                     </p>
+                  </div>
+                <div class="img_div" style='background-image: url({{activity["image_url"]}})'></div>
+              </div>
+            {% endfor %}
           </div>
-          <div id = "transportation">
+          <div id = "weather">
             <h3>Weather</h3>
+<<<<<<< HEAD
           The current temperature is: {{ct}} Celcius <br>
           The temperature tommorow is: {{tt}} Celcius
+=======
+              The current temperature is: {{temp}} fahrenheit.
+>>>>>>> 7c3d46a42d7d5b5c8276817e4a1552cf644a7203
           </div>
         </div>
     </div>

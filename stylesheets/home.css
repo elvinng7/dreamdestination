@@ -12,10 +12,6 @@ body {
   font-family: 'Open Sans', sans-serif;
 }
 
-.title {
-  text-align: center;
-}
-
 .nav ul {
   list-style: none;
   background-color: transparent;
@@ -24,6 +20,7 @@ body {
   margin: 0;
   font-size: 13px;
 }
+
 .nav li {
   font-size: 1.2em;
   line-height: 20px;
@@ -64,9 +61,4 @@ body {
   bottom: 380px;
   left: 0px;
   right:0px;
-}
-
-#title {
-  font-size: 20px;
-  text-align: left;
 }

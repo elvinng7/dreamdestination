@@ -48,47 +48,26 @@ img {
 .card {
   padding: 40px;
   background-color: white;
-  margin: 40px;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-bottom: 50px;
   border: 1px solid black;
   border-radius: 5px;
-  box-shadow: -10px 10px 25px black;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: lightgray;
 }
 
-.nav {
-  background-color: lightblue;
-  padding: 15px;
-  font-family: 'Open Sans Condensed', sans-serif;
+.profile_image {
+  margin-right: 100px;
 }
 
-.nav ul {
-  list-style-type: none;
-  text-align: center;
-}
-.nav li {
-  font-size: 1.2em;
-  line-height: 40px;
-  height: 40px;
-  font-family: 'Open Sans Condensed', sans-serif;
-  display: inline-block;
-  padding: 0px 15px;
+.profile_bio {
+  flex-grow: 1;
 }
 
-.nav a {
-  text-decoration: none;
-  color: black;
-  display: block;
-  transition: .3s background-color;
-}
-
-.nav a:hover {
-  /* background-color: #005f5f; */
-  background-color: blue;
-}
-
-.navbar a.active {
-  background-color: #fff;
-  color: #444;
-  cursor: default;
+p {
+  font-size: 20px;
 }
