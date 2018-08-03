@@ -47,7 +47,7 @@ destinations = [
     Destination(2, 2, 3, 2, "Mount Desert Island, Maine"),
     Destination(3, 2, 3, 2, "Traverse City, Michigan"),
     Destination(3, 0, 2, 1, "Santa Fe, New Mexico"),
-    Destination(2, 2, 2, 1, "Blackwater Falls State Park, West Virginia"),
+    Destination(2, 2, 2, 1, "Boulder, Colorado"),
 
     # Inside the CA
     Destination(1, 1, 0, 0, "San Francisco, California"),
@@ -173,6 +173,7 @@ class ResultsPage(webapp2.RequestHandler):
         # Getting the weather
         weather_url = "https://api.openweathermap.org/data/2.5/forecast?q=" + urllib.quote(dream_location) + "&appid=9b1d5c38c7cf71459b9ac0908d63d060"
         weather = urlfetch.fetch(weather_url)
+        print weather_url
 
         json_result = json.loads(weather.content)
         temperature = json_result["list"][0]["main"]["temp"]
