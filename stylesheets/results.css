@@ -19,7 +19,16 @@ h3 {
   align-items: center;
   background-color: lightgray;
   margin: 50px;
+}
 
+#image_for_weather {
+  margin: 30px;
+  margin-bottom: 50px;
+  font-size: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 #location {

@@ -39,7 +39,7 @@ destinations = [
     # Outside of the country
     Destination(2, 2, 4, 2, "Naples, Italy"),
     Destination(1, 2, 4, 2, "Vancouver, Canada"),
-    Destination(3, 2, 4, 3, "Kauai, Hawaii"),
+    Destination(3, 2, 4, 3, "Salema, Portugal"),
     Destination(0, 2, 4, 2, "Zurich, Switzerland"),
 
     # Inside the US
@@ -176,6 +176,7 @@ class ResultsPage(webapp2.RequestHandler):
 
         json_result = json.loads(weather.content)
         temperature = json_result["list"][0]["main"]["temp"]
+        description_of_weather = json_result["list"][0]["weather"][0]["description"]
         temp = temperature * (9.0/5.0) - 459.67
 
         templateVars = {
@@ -184,6 +185,7 @@ class ResultsPage(webapp2.RequestHandler):
             "temp": temp,
             "restaurants": restaurants,
             "hotels": hotels,
+            "description_of_weather": description_of_weather,
             "activities": activities,
         }
 

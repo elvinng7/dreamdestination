@@ -104,8 +104,12 @@
             {% endfor %}
           </div>
           <div id = "weather">
-            <h3>Weather</h3>
-              The current temperature is: {{temp}} fahrenheit.
+              <h3>Weather</h3>
+              <div id="image_for_weather">
+                <img src="/images/weather.png" height="200px">
+                <p>The current temperature is: {{temp}} fahrenheit.</p>
+                <p>Current description of weather: {{description_of_weather}}</p>
+              </div>
           </div>
         </div>
     </div>
