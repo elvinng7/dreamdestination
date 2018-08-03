@@ -177,12 +177,11 @@ class ResultsPage(webapp2.RequestHandler):
         logging.info(weather.content)
         json_result = json.loads(weather.content)
         temperature = json_result["list"][0]["main"]["temp"]
-        temp = (temperature * (9.0/5)) - 459.67
+        temp = temperature * (9/5) - 459.67
 
         templateVars = {
             "dream_location": dream_location,
             "summary": summary,
-            "temperature": temperature,
             "temp": temp,
             "restaurants": restaurants,
             "hotels": hotels,
