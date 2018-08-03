@@ -112,8 +112,7 @@ class ResultsPage(webapp2.RequestHandler):
 
         min_result = None
         dream_location = "Not found"
-    # Destination(3, 0, 2, 1, "Santa Fe, New Mexico"),
-    # Destination(3, 1, 0, 0, "Santa Cruz, California"),
+
         for destination in destinations:
             results_of_similarity = (abs(destination.weather - weather)
                                     + abs(destination.transportation - transportation)
@@ -172,12 +171,12 @@ class ResultsPage(webapp2.RequestHandler):
         activities = activities_json["businesses"]
 
         # Getting the weather
-        weather_url = "https://samples.openweathermap.org/data/2.5/forecast?q=" + urllib.quote(dream_location) + "&appid=9b1d5c38c7cf71459b9ac0908d63d060"
+        weather_url = "https://api.openweathermap.org/data/2.5/forecast?q=" + urllib.quote(dream_location) + "&appid=9b1d5c38c7cf71459b9ac0908d63d060"
         weather = urlfetch.fetch(weather_url)
 
         json_result = json.loads(weather.content)
         temperature = json_result["list"][0]["main"]["temp"]
-        temp = temperature * (9/5) - 459.67
+        temp = temperature * (9.0/5.0) - 459.67
 
         templateVars = {
             "dream_location": dream_location,
