@@ -3,19 +3,20 @@ body {
 }
 
 #newsbackground {
-  background-image: url("/images/newsroom2.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
 }
+
 #traveltitle {
-  color: white;
+  color: black;
   font-size: 45px;
   text-align: center;
 }
+
 #left {
   flex-grow: 1;
   width: 100%;
-  margin-right: 100px;
+  margin-right: 150px;
 }
 
 #newsimage {
@@ -29,23 +30,17 @@ body {
 }
 
 #newsbox {
-  text-align: left;
-  font-size: 18px;
-  width: 1000px;
-  length: 150px;
-  padding: 40px;
-  background-color: white;
-  margin: 40px;
-  border: 1px solid black;
-  border-radius: 5px;
-  box-shadow: -10px 10px 25px black;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-#space{
-
+    padding: 40px;
+    background-color: white;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 50px;
+    border: 1px solid black;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 #title {
